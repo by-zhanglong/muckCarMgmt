@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.WarnCarInfoMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.WarnCarInfo">
+    <id column="warn_c_id" jdbcType="INTEGER" property="warnCId" />
+    <result column="warn_c_num" jdbcType="VARCHAR" property="warnCNum" />
+    <result column="warn_c_time" jdbcType="VARCHAR" property="warnCTime" />
+    <result column="warn_c_place" jdbcType="VARCHAR" property="warnCPlace" />
+    <result column="warn_c_total" jdbcType="INTEGER" property="warnCTotal" />
+    <result column="warn_c_color" jdbcType="VARCHAR" property="warnCColor" />
+    <result column="warn_item" jdbcType="VARCHAR" property="warnItem" />
+    <result column="warn_c_udf_1" jdbcType="VARCHAR" property="warnCUdf1" />
+    <result column="warn_c_udf_2" jdbcType="VARCHAR" property="warnCUdf2" />
+    <result column="warn_c_udf_3" jdbcType="VARCHAR" property="warnCUdf3" />
+    <result column="warn_c_udf_4" jdbcType="VARCHAR" property="warnCUdf4" />
+    <result column="warn_c_udf_5" jdbcType="VARCHAR" property="warnCUdf5" />
+    <result column="channel_name" jdbcType="VARCHAR" property="channelName" />
+    <result column="channel_x" jdbcType="VARCHAR" property="channelX" />
+    <result column="channel_y" jdbcType="VARCHAR" property="channelY" />
+    <result column="sum_sore" jdbcType="INTEGER" property="sumScore" />
+    <result column="control_id" jdbcType="INTEGER" property="controlId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    warn_c_id, warn_c_num, warn_c_time, warn_c_place, warn_c_total, warn_c_color, warn_item, 
+    warn_c_udf_1, warn_c_udf_2, warn_c_udf_3, warn_c_udf_4, warn_c_udf_5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from warn_car_info
+    where warn_c_id = #{warnCId,jdbcType=INTEGER}
+  </select>
+  <select id="selectWarnCarInfoByMap"  parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from warn_car_info
+    <if test="map.warnCUdf4 != null">
+        <![CDATA[ and warn_c_udf_4=#{map.warnCUdf4}]]>  
+    </if>
+  	<if test="map.warnCNum != null">
+        <![CDATA[ and warn_c_num=#{map.warnCNum}]]>  
+    </if>
+    <if test="map.warnCPlace != null">
+        <![CDATA[ and warn_c_place=#{map.warnCPlace}]]>  
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from warn_car_info
+    where warn_c_id = #{warnCId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bayee.model.WarnCarInfo" useGeneratedKeys="true" keyProperty="warn_c_id">
+    insert into warn_car_info (warn_c_id, warn_c_num, warn_c_time, 
+      warn_c_place, warn_c_total, warn_c_color, 
+      warn_item, warn_c_udf_1, warn_c_udf_2, 
+      warn_c_udf_3, warn_c_udf_4, warn_c_udf_5
+      )
+    values (#{warnCId,jdbcType=INTEGER}, #{warnCNum,jdbcType=VARCHAR}, #{warnCTime,jdbcType=VARCHAR}, 
+      #{warnCPlace,jdbcType=VARCHAR}, #{warnCTotal,jdbcType=INTEGER}, #{warnCColor,jdbcType=VARCHAR}, 
+      #{warnItem,jdbcType=VARCHAR}, #{warnCUdf1,jdbcType=VARCHAR}, #{warnCUdf2,jdbcType=VARCHAR}, 
+      #{warnCUdf3,jdbcType=VARCHAR}, #{warnCUdf4,jdbcType=VARCHAR}, #{warnCUdf5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.WarnCarInfo" useGeneratedKeys="true" keyProperty="warn_c_id">
+    insert into warn_car_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="warnCId != null">
+        warn_c_id,
+      </if>
+      <if test="warnCNum != null">
+        warn_c_num,
+      </if>
+      <if test="warnCTime != null">
+        warn_c_time,
+      </if>
+      <if test="warnCPlace != null">
+        warn_c_place,
+      </if>
+      <if test="warnCTotal != null">
+        warn_c_total,
+      </if>
+      <if test="warnCColor != null">
+        warn_c_color,
+      </if>
+      <if test="warnItem != null">
+        warn_item,
+      </if>
+      <if test="warnCUdf1 != null">
+        warn_c_udf_1,
+      </if>
+      <if test="warnCUdf2 != null">
+        warn_c_udf_2,
+      </if>
+      <if test="warnCUdf3 != null">
+        warn_c_udf_3,
+      </if>
+      <if test="warnCUdf4 != null">
+        warn_c_udf_4,
+      </if>
+      <if test="warnCUdf5 != null">
+        warn_c_udf_5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="warnCId != null">
+        #{warnCId,jdbcType=INTEGER},
+      </if>
+      <if test="warnCNum != null">
+        #{warnCNum,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCTime != null">
+        #{warnCTime,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCPlace != null">
+        #{warnCPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCTotal != null">
+        #{warnCTotal,jdbcType=INTEGER},
+      </if>
+      <if test="warnCColor != null">
+        #{warnCColor,jdbcType=VARCHAR},
+      </if>
+      <if test="warnItem != null">
+        #{warnItem,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCUdf1 != null">
+        #{warnCUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCUdf2 != null">
+        #{warnCUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCUdf3 != null">
+        #{warnCUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCUdf4 != null">
+        #{warnCUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCUdf5 != null">
+        #{warnCUdf5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bayee.model.WarnCarInfo">
+    update warn_car_info
+    <set>
+      <if test="warnCNum != null">
+        warn_c_num = #{warnCNum,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCTime != null">
+        warn_c_time = #{warnCTime,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCPlace != null">
+        warn_c_place = #{warnCPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCTotal != null">
+        warn_c_total = #{warnCTotal,jdbcType=INTEGER},
+      </if>
+      <if test="warnCColor != null">
+        warn_c_color = #{warnCColor,jdbcType=VARCHAR},
+      </if>
+      <if test="warnItem != null">
+        warn_item = #{warnItem,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCUdf1 != null">
+        warn_c_udf_1 = #{warnCUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCUdf2 != null">
+        warn_c_udf_2 = #{warnCUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCUdf3 != null">
+        warn_c_udf_3 = #{warnCUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCUdf4 != null">
+        warn_c_udf_4 = #{warnCUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCUdf5 != null">
+        warn_c_udf_5 = #{warnCUdf5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where warn_c_id = #{warnCId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bayee.model.WarnCarInfo">
+    update warn_car_info
+    set warn_c_num = #{warnCNum,jdbcType=VARCHAR},
+      warn_c_time = #{warnCTime,jdbcType=VARCHAR},
+      warn_c_place = #{warnCPlace,jdbcType=VARCHAR},
+      warn_c_total = #{warnCTotal,jdbcType=INTEGER},
+      warn_c_color = #{warnCColor,jdbcType=VARCHAR},
+      warn_item = #{warnItem,jdbcType=VARCHAR},
+      warn_c_udf_1 = #{warnCUdf1,jdbcType=VARCHAR},
+      warn_c_udf_2 = #{warnCUdf2,jdbcType=VARCHAR},
+      warn_c_udf_3 = #{warnCUdf3,jdbcType=VARCHAR},
+      warn_c_udf_4 = #{warnCUdf4,jdbcType=VARCHAR},
+      warn_c_udf_5 = #{warnCUdf5,jdbcType=VARCHAR}
+    where warn_c_id = #{warnCId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectWarnCarByParamMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    ,p.palce_name as channel_name,p.palce_x as channel_x,p.palce_y as channel_y,c_sum.sum_sore  
+    from warn_car_info c
+     left join  sys_palce_info p
+     on c.warn_c_place=p.palce_no
+     join (select warn_c_num as car_num,sum(warn_c_total) as sum_sore from warn_car_info group by warn_c_num ) c_sum
+     on c_sum.car_num=c.warn_c_num
+    <where>
+    		<!--  1=1 -->
+    	  warn_c_num not in(SELECT car_num FROM sys_car_info WHERE car_type=0)
+    	<if test="map.warnCNum != null">
+       	 and warn_c_num = #{map.warnCNum,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.warnCTimeStart != null">
+        	<![CDATA[ and UNIX_TIMESTAMP(warn_c_time) >= UNIX_TIMESTAMP(#{map.warnCTimeStart,jdbcType=VARCHAR})]]>  
+      	</if>
+      	<if test="map.warnCTimeEnd != null">
+        	<![CDATA[ and UNIX_TIMESTAMP(warn_c_time) <= UNIX_TIMESTAMP(#{map.warnCTimeEnd,jdbcType=VARCHAR})]]>  
+      	</if>
+      	<if test="map.warnCPlace != null">
+      		and INSTR(#{map.warnCPlace,jdbcType=VARCHAR},p.palce_id)>0
+      	</if>
+      	<if test="map.warnCPlaceNo != null">
+      		and warn_c_place=#{map.warnCPlaceNo,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.isNullWarnCplace != null">
+       		and warn_c_place is not null
+      	</if>
+      	<if test="map.warnCColor != null">
+        	and warn_c_color=#{map.warnCColor,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.warnItem != null">
+        	and INSTR(concat(warn_item,','),#{map.warnItem,jdbcType=VARCHAR})>0
+      	</if>
+      	<if test="map.warnItemStr != null">
+        	and (${map.warnItemStr})
+      	</if>
+      	<if test="map.warnCTime != null">
+        	<![CDATA[ and find_in_set(#{map.warnCTime,jdbcType=VARCHAR}, warn_c_time)]]>  
+      	</if>
+      	<if test="map.score != null">
+        	<![CDATA[ and warn_c_total is not null and warn_c_total>0]]>  
+      	</if>
+      	<if test="map.keyWord != null">
+      		and (p.palce_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or warn_c_udf_2 like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+      	<if test="map.isActive != null">
+      		<![CDATA[and warn_c_num is not null and warn_c_num<>'' and warn_c_num!='00000000']]>  		
+      	</if>
+    </where>
+    <if test="map.warnSort == '1'.toString()">
+    	order by c_sum.sum_sore desc
+    </if>
+    <if test="map.warnSort != '1'.toString()">
+    	order by UNIX_TIMESTAMP(warn_c_time) desc
+    </if>
+    <if test="map.start != null and map.pageSize != null">
+     limit #{map.start},#{map.pageSize}
+    </if>
+  </select>
+   <select id="selectWarnCarCountByParamMap" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(1)
+    from warn_car_info c
+     left join  sys_palce_info p
+     on c.warn_c_place=p.palce_no
+     join (select warn_c_num as car_num,sum(warn_c_total) as sum_sore from warn_car_info group by warn_c_num ) c_sum
+     on c_sum.car_num=c.warn_c_num
+    <where>
+   		 <!-- 1=1 -->
+    	  warn_c_num not in(SELECT car_num FROM sys_car_info WHERE car_type=0) 
+    	<if test="map.warnCNum != null">
+       	 and warn_c_num = #{map.warnCNum,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.warnCTimeStart != null">
+        	<![CDATA[ and UNIX_TIMESTAMP(warn_c_time) >= UNIX_TIMESTAMP(#{map.warnCTimeStart,jdbcType=VARCHAR})]]>  
+      	</if>
+      	<if test="map.warnCTimeEnd != null">
+        	<![CDATA[ and UNIX_TIMESTAMP(warn_c_time) <= UNIX_TIMESTAMP(#{map.warnCTimeEnd,jdbcType=VARCHAR})]]>  
+      	</if>
+      	<if test="map.warnCPlace != null">
+      		and INSTR(#{map.warnCPlace,jdbcType=VARCHAR},p.palce_id)>0
+      	</if>
+      	<if test="map.isNullWarnCplace != null">
+       		and warn_c_place is not null
+      	</if>
+      	<if test="map.warnCColor != null">
+        	and warn_c_color=#{map.warnCColor,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.warnItem != null">
+        	and INSTR(concat(warn_item,','),#{map.warnItem,jdbcType=VARCHAR})>0
+      	</if>
+      	<if test="map.warnItemStr != null">
+        	and (${map.warnItemStr})
+      	</if>
+      	<if test="map.warnCTime != null">
+        	<![CDATA[ and find_in_set(#{map.warnCTime,jdbcType=VARCHAR}, warn_c_time)]]>  
+      	</if>
+      	<if test="map.score != null">
+        	<![CDATA[ and warn_c_total is not null and warn_c_total>0]]>  
+      	</if>
+      	<if test="map.keyWord != null">
+      		and (p.palce_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or warn_c_udf_2 like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+      	<if test="map.isActive != null">
+      		<![CDATA[and warn_c_num is not null and warn_c_num<>'' and warn_c_num!='00000000']]>  	
+      	</if>
+    </where>
+  </select>
+  <select id="selectWarnCarScoreByParamMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select warn_c_id, warn_c_num, warn_c_time, warn_c_place, list_value_score as warn_c_total, warn_c_color, warn_item, 
+    warn_c_udf_1,  warn_c_udf_4, warn_c_udf_5,warn_c_udf_3,warn_c_udf_2, channel_name,channel_x,channel_y from 
+	(SELECT
+	warn_c_id, warn_c_num, warn_c_time, warn_c_place, warn_c_total, warn_c_color, warn_item, 
+    warn_c_udf_1,  warn_c_udf_4, warn_c_udf_5,
+    SUBSTRING_INDEX(
+        SUBSTRING_INDEX(
+            c.warn_c_udf_2,
+            ',',
+            b.help_topic_id + 1
+        ),
+        ',' ,- 1
+    ) AS warn_c_udf_2,
+	SUBSTRING_INDEX( SUBSTRING_INDEX( c.warn_c_udf_3, ',', b.help_topic_id + 1 ), ',',- 1 ) AS warn_c_udf_3,
+	p.palce_name AS channel_name,
+	p.palce_x AS channel_x,
+	p.palce_y AS channel_y 
+FROM
+	warn_car_info c
+	LEFT JOIN sys_palce_info p ON c.warn_c_place = p.palce_no
+	<![CDATA[JOIN mysql.help_topic b ON b.help_topic_id < (
+	 LENGTH( c.warn_c_udf_2 ) - LENGTH( REPLACE ( c.warn_c_udf_2, ',', '' ) ) + 1)
+	and b.help_topic_id < (
+	LENGTH( c.warn_c_udf_3 ) - LENGTH( REPLACE ( c.warn_c_udf_3, ',', '' ) ) + 1)
+	]]>
+    <where>
+    	 1=1
+    	 <!--  warn_c_num not in(SELECT car_num FROM sys_car_info WHERE car_type=0) -->
+    	<if test="map.warnCNum != null">
+       	 and warn_c_num = #{map.warnCNum,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.warnCTimeStart != null">
+        	<![CDATA[ and UNIX_TIMESTAMP(warn_c_time) >= UNIX_TIMESTAMP(#{map.warnCTimeStart,jdbcType=VARCHAR})]]>  
+      	</if>
+      	<if test="map.warnCTimeEnd != null">
+        	<![CDATA[ and UNIX_TIMESTAMP(warn_c_time) <= UNIX_TIMESTAMP(#{map.warnCTimeEnd,jdbcType=VARCHAR})]]>  
+      	</if>
+      	<if test="map.warnCPlace != null">
+      		and INSTR(#{map.warnCPlace,jdbcType=VARCHAR},p.palce_id)>0
+      	</if>
+      	<if test="map.isNullWarnCplace != null">
+       		and warn_c_place is not null
+      	</if>
+      	<if test="map.warnCColor != null">
+        	and warn_c_color=#{map.warnCColor,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.warnItem != null">
+        	and INSTR(warn_item,#{map.warnItem,jdbcType=VARCHAR})>0
+      	</if>
+      	<if test="map.warnItemStr != null">
+        	and (${map.warnItemStr})
+      	</if>
+      	<if test="map.warnCTime != null">
+        	<![CDATA[ and find_in_set(#{map.warnCTime,jdbcType=VARCHAR}, warn_c_time)]]>  
+      	</if>
+      	<if test="map.score != null">
+        	<![CDATA[ and warn_c_total is not null and warn_c_total>0]]>  
+      	</if>
+      	<if test="map.keyWord != null">
+      		and (p.palce_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or warn_c_udf_2 like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+    </where>
+   	)tmp
+	 JOIN sys_rule_list
+	 on list_id=tmp.warn_c_udf_3
+	 order by UNIX_TIMESTAMP(warn_c_time) desc
+    <if test="map.start != null and map.pageSize != null">
+     limit #{map.start},#{map.pageSize}
+    </if>
+  </select>
+   <select id="selectWarnCarScoreCountByParamMap" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(1)
+    from warn_car_info c
+	LEFT JOIN sys_palce_info p ON c.warn_c_place = p.palce_no
+	<![CDATA[JOIN mysql.help_topic b ON b.help_topic_id < (
+	 LENGTH( c.warn_c_udf_2 ) - LENGTH( REPLACE ( c.warn_c_udf_2, ',', '' ) ) + 1)
+	and b.help_topic_id < (
+	LENGTH( c.warn_c_udf_3 ) - LENGTH( REPLACE ( c.warn_c_udf_3, ',', '' ) ) + 1)
+	]]>
+    <where>
+    	 1=1
+    	 <!--  warn_c_num not in(SELECT car_num FROM sys_car_info WHERE car_type=0)  -->
+    	<if test="map.warnCNum != null">
+       	 and warn_c_num = #{map.warnCNum,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.warnCTimeStart != null">
+        	<![CDATA[ and UNIX_TIMESTAMP(warn_c_time) >= UNIX_TIMESTAMP(#{map.warnCTimeStart,jdbcType=VARCHAR})]]>  
+      	</if>
+      	<if test="map.warnCTimeEnd != null">
+        	<![CDATA[ and UNIX_TIMESTAMP(warn_c_time) <= UNIX_TIMESTAMP(#{map.warnCTimeEnd,jdbcType=VARCHAR})]]>  
+      	</if>
+      	<if test="map.warnCPlace != null">
+      		and INSTR(#{map.warnCPlace,jdbcType=VARCHAR},p.palce_id)>0
+      	</if>
+      	<if test="map.isNullWarnCplace != null">
+       		and warn_c_place is not null
+      	</if>
+      	<if test="map.warnCColor != null">
+        	and warn_c_color=#{map.warnCColor,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.warnItem != null">
+        	and INSTR(warn_item,#{map.warnItem,jdbcType=VARCHAR})>0
+      	</if>
+      	<if test="map.warnItemStr != null">
+        	and (${map.warnItemStr})
+      	</if>
+      	<if test="map.warnCTime != null">
+        	<![CDATA[ and find_in_set(#{map.warnCTime,jdbcType=VARCHAR}, warn_c_time)]]>  
+      	</if>
+      	<if test="map.score != null">
+        	<![CDATA[ and warn_c_total is not null and warn_c_total>0]]>  
+      	</if>
+      	<if test="map.keyWord != null">
+      		and (p.palce_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or warn_c_udf_2 like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+    </where>
+  </select>
+  <delete id="deleteWarnCarInfoByMap" parameterType="java.lang.Integer">
+    delete from warn_car_info
+    <where>
+    		1=1
+    	<if test="map.warnCNum != null">
+       	 and warn_c_num = #{map.warnCNum,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.warnItem != null">
+        	and warn_item=#{map.warnItem,jdbcType=VARCHAR}
+      	</if>
+    </where>
+  </delete>
+  
+  <select id="selectEarlyWarnCarByParamMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    warn_c_id, warn_c_num, warn_c_time, warn_c_place, warn_c_total, warn_c_color, warn_item, 
+    warn_c_udf_1, c_sum.warn_c_udf_2_t as warn_c_udf_2, warn_c_udf_3, warn_c_udf_4, warn_c_udf_5
+    ,p.palce_name as channel_name,p.palce_x as channel_x,p.palce_y as channel_y,c_sum.sum_sore,cc.c_id as control_id 
+    from warn_car_info c
+     left join  sys_palce_info p
+     on c.warn_c_place=p.palce_no
+     join (select warn_c_num as car_num,group_concat(warn_c_udf_2) as warn_c_udf_2_t,sum(warn_c_total) as sum_sore,max(UNIX_TIMESTAMP(warn_c_time)) as last_warn_time from warn_car_info where warn_c_total is not null and warn_c_total>0 group by warn_c_num ) c_sum
+     on c_sum.car_num=c.warn_c_num and c_sum.last_warn_time=UNIX_TIMESTAMP(c.warn_c_time)
+     left join car_control_info cc
+     on cc.c_car_num=c.warn_c_num and cc.c_status=0
+    <where>
+    	  warn_c_num not in(SELECT car_num FROM sys_car_info WHERE car_type=0)
+ 		  and warn_c_total is not null and warn_c_total>0
+      	<if test="map.warnItem != null">
+        	and INSTR(concat(warn_item,','),#{map.warnItem,jdbcType=VARCHAR})>0
+      	</if>
+      	<if test="map.keyWord != null">
+      		and (p.palce_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or warn_c_num like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+      	<if test="map.isActive != null">
+      		<![CDATA[and warn_c_num is not null and warn_c_num<>'' and warn_c_num!='00000000']]>  		
+      	</if>
+    </where>
+    	order by c_sum.sum_sore desc
+    <if test="map.start != null and map.pageSize != null">
+     limit #{map.start},#{map.pageSize}
+    </if>
+  </select>
+   <select id="selectEarlyWarnCarCountByParamMap" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(1)
+    from warn_car_info c
+     left join  sys_palce_info p
+     on c.warn_c_place=p.palce_no
+     join (select warn_c_num as car_num,group_concat(warn_c_udf_2) as warn_c_udf_2_t,sum(warn_c_total) as sum_sore,max(UNIX_TIMESTAMP(warn_c_time)) as last_warn_time from warn_car_info where warn_c_total is not null and warn_c_total>0 group by warn_c_num ) c_sum
+     on c_sum.car_num=c.warn_c_num and c_sum.last_warn_time=UNIX_TIMESTAMP(c.warn_c_time)
+    <where>
+    	 warn_c_num not in(SELECT car_num FROM sys_car_info WHERE car_type=0)
+    	 and warn_c_total is not null and warn_c_total>0
+      	<if test="map.warnItem != null">
+        	and INSTR(concat(warn_item,','),#{map.warnItem,jdbcType=VARCHAR})>0
+      	</if>
+      	<if test="map.keyWord != null">
+      		and (p.palce_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or warn_c_num like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+      	<if test="map.isActive != null">
+      		<![CDATA[and warn_c_num is not null and warn_c_num<>'' and warn_c_num!='00000000']]>  		
+      	</if>
+    </where>
+  </select>
+</mapper>

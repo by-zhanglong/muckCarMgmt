@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.ProcessingEventImagelistMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.ProcessingEventImagelist">
+    <result column="img_Idx" jdbcType="INTEGER" property="imgIdx" />
+    <result column="parent_Img_Idx" jdbcType="INTEGER" property="parentImgIdx" />
+    <result column="cache_Url" jdbcType="VARCHAR" property="cacheUrl" />
+    <result column="img_Url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="img_Size" jdbcType="INTEGER" property="imgSize" />
+    <result column="img_Pixel" jdbcType="VARCHAR" property="imgPixel" />
+    <result column="img_Type" jdbcType="INTEGER" property="imgType" />
+    <result column="plate_Char_Reliability" jdbcType="VARCHAR" property="plateCharReliability" />
+    <result column="pic_Record_Id" jdbcType="VARCHAR" property="picRecordId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.bayee.model.ProcessingEventImagelist">
+    insert into processing_event_image_list (img_Idx, parent_Img_Idx, cache_Url, 
+      img_Url, img_Size, img_Pixel, 
+      img_Type, plate_Char_Reliability, pic_Record_Id
+      )
+    values (#{imgIdx,jdbcType=INTEGER}, #{parentImgIdx,jdbcType=INTEGER}, #{cacheUrl,jdbcType=VARCHAR}, 
+      #{imgUrl,jdbcType=VARCHAR}, #{imgSize,jdbcType=INTEGER}, #{imgPixel,jdbcType=VARCHAR}, 
+      #{imgType,jdbcType=INTEGER}, #{plateCharReliability,jdbcType=VARCHAR}, #{picRecordId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.ProcessingEventImagelist">
+    insert into processing_event_image_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="imgIdx != null">
+        img_Idx,
+      </if>
+      <if test="parentImgIdx != null">
+        parent_Img_Idx,
+      </if>
+      <if test="cacheUrl != null">
+        cache_Url,
+      </if>
+      <if test="imgUrl != null">
+        img_Url,
+      </if>
+      <if test="imgSize != null">
+        img_Size,
+      </if>
+      <if test="imgPixel != null">
+        img_Pixel,
+      </if>
+      <if test="imgType != null">
+        img_Type,
+      </if>
+      <if test="plateCharReliability != null">
+        plate_Char_Reliability,
+      </if>
+      <if test="picRecordId != null">
+        pic_Record_Id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="imgIdx != null">
+        #{imgIdx,jdbcType=INTEGER},
+      </if>
+      <if test="parentImgIdx != null">
+        #{parentImgIdx,jdbcType=INTEGER},
+      </if>
+      <if test="cacheUrl != null">
+        #{cacheUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgSize != null">
+        #{imgSize,jdbcType=INTEGER},
+      </if>
+      <if test="imgPixel != null">
+        #{imgPixel,jdbcType=VARCHAR},
+      </if>
+      <if test="imgType != null">
+        #{imgType,jdbcType=INTEGER},
+      </if>
+      <if test="plateCharReliability != null">
+        #{plateCharReliability,jdbcType=VARCHAR},
+      </if>
+      <if test="picRecordId != null">
+        #{picRecordId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

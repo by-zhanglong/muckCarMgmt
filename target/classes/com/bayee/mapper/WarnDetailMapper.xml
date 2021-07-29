@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.WarnDetailMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.WarnDetail">
+    <id column="wd_id" jdbcType="INTEGER" property="wdId" />
+    <result column="wd_list_id" jdbcType="INTEGER" property="wdListId" />
+    <result column="wd_car_id" jdbcType="INTEGER" property="wdCarId" />
+    <result column="wd_channel_Id" jdbcType="VARCHAR" property="wdChannelId" />
+    <result column="wd_channel_place" jdbcType="VARCHAR" property="wdChannelPlace" />
+    <result column="wd_type_id" jdbcType="INTEGER" property="wdTypeId" />
+    <result column="wd_type_name" jdbcType="VARCHAR" property="wdTypeName" />
+    <result column="wd_udf_2" jdbcType="VARCHAR" property="wdUdf2" />
+    <result column="wd_udf_3" jdbcType="VARCHAR" property="wdUdf3" />
+    <result column="wd_udf_4" jdbcType="VARCHAR" property="wdUdf4" />
+    <result column="wd_udf_5" jdbcType="VARCHAR" property="wdUdf5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    wd_id, wd_list_id, wd_car_id, wd_channel_Id, wd_channel_place, wd_type_id, wd_type_name, 
+    wd_udf_2, wd_udf_3, wd_udf_4, wd_udf_5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from warn_detail
+    where wd_id = #{wdId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from warn_detail
+    where wd_id = #{wdId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bayee.model.WarnDetail">
+    insert into warn_detail (wd_id, wd_list_id, wd_car_id, 
+      wd_channel_Id, wd_channel_place, wd_type_id, 
+      wd_type_name, wd_udf_2, wd_udf_3, 
+      wd_udf_4, wd_udf_5)
+    values (#{wdId,jdbcType=INTEGER}, #{wdListId,jdbcType=INTEGER}, #{wdCarId,jdbcType=INTEGER}, 
+      #{wdChannelId,jdbcType=VARCHAR}, #{wdChannelPlace,jdbcType=VARCHAR}, #{wdTypeId,jdbcType=INTEGER}, 
+      #{wdTypeName,jdbcType=VARCHAR}, #{wdUdf2,jdbcType=VARCHAR}, #{wdUdf3,jdbcType=VARCHAR}, 
+      #{wdUdf4,jdbcType=VARCHAR}, #{wdUdf5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.WarnDetail">
+    insert into warn_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wdId != null">
+        wd_id,
+      </if>
+      <if test="wdListId != null">
+        wd_list_id,
+      </if>
+      <if test="wdCarId != null">
+        wd_car_id,
+      </if>
+      <if test="wdChannelId != null">
+        wd_channel_Id,
+      </if>
+      <if test="wdChannelPlace != null">
+        wd_channel_place,
+      </if>
+      <if test="wdTypeId != null">
+        wd_type_id,
+      </if>
+      <if test="wdTypeName != null">
+        wd_type_name,
+      </if>
+      <if test="wdUdf2 != null">
+        wd_udf_2,
+      </if>
+      <if test="wdUdf3 != null">
+        wd_udf_3,
+      </if>
+      <if test="wdUdf4 != null">
+        wd_udf_4,
+      </if>
+      <if test="wdUdf5 != null">
+        wd_udf_5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wdId != null">
+        #{wdId,jdbcType=INTEGER},
+      </if>
+      <if test="wdListId != null">
+        #{wdListId,jdbcType=INTEGER},
+      </if>
+      <if test="wdCarId != null">
+        #{wdCarId,jdbcType=INTEGER},
+      </if>
+      <if test="wdChannelId != null">
+        #{wdChannelId,jdbcType=VARCHAR},
+      </if>
+      <if test="wdChannelPlace != null">
+        #{wdChannelPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="wdTypeId != null">
+        #{wdTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="wdTypeName != null">
+        #{wdTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="wdUdf2 != null">
+        #{wdUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="wdUdf3 != null">
+        #{wdUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="wdUdf4 != null">
+        #{wdUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="wdUdf5 != null">
+        #{wdUdf5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bayee.model.WarnDetail">
+    update warn_detail
+    <set>
+      <if test="wdListId != null">
+        wd_list_id = #{wdListId,jdbcType=INTEGER},
+      </if>
+      <if test="wdCarId != null">
+        wd_car_id = #{wdCarId,jdbcType=INTEGER},
+      </if>
+      <if test="wdChannelId != null">
+        wd_channel_Id = #{wdChannelId,jdbcType=VARCHAR},
+      </if>
+      <if test="wdChannelPlace != null">
+        wd_channel_place = #{wdChannelPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="wdTypeId != null">
+        wd_type_id = #{wdTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="wdTypeName != null">
+        wd_type_name = #{wdTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="wdUdf2 != null">
+        wd_udf_2 = #{wdUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="wdUdf3 != null">
+        wd_udf_3 = #{wdUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="wdUdf4 != null">
+        wd_udf_4 = #{wdUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="wdUdf5 != null">
+        wd_udf_5 = #{wdUdf5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where wd_id = #{wdId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bayee.model.WarnDetail">
+    update warn_detail
+    set wd_list_id = #{wdListId,jdbcType=INTEGER},
+      wd_car_id = #{wdCarId,jdbcType=INTEGER},
+      wd_channel_Id = #{wdChannelId,jdbcType=VARCHAR},
+      wd_channel_place = #{wdChannelPlace,jdbcType=VARCHAR},
+      wd_type_id = #{wdTypeId,jdbcType=INTEGER},
+      wd_type_name = #{wdTypeName,jdbcType=VARCHAR},
+      wd_udf_2 = #{wdUdf2,jdbcType=VARCHAR},
+      wd_udf_3 = #{wdUdf3,jdbcType=VARCHAR},
+      wd_udf_4 = #{wdUdf4,jdbcType=VARCHAR},
+      wd_udf_5 = #{wdUdf5,jdbcType=VARCHAR}
+    where wd_id = #{wdId,jdbcType=INTEGER}
+  </update>
+  <select id="selectcountByRuleTypeId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select count(1) from 
+    warn_detail 
+    where wd_type_id=#{list_type_id}
+  </select>
+   <select id="selectWarnDetailListByParaMap" parameterType="java.util.Map"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from warn_detail
+    <where>
+    	1=1
+    	<if test="map.carId != null">
+       	 and wd_car_id = #{map.carId,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.warnCTime != null">
+        	<![CDATA[ and find_in_set(#{map.warnCTime,jdbcType=VARCHAR}, wd_udf_2)]]>  
+      	</if>
+      	<if test="map.keyWord != null">
+      		and (wd_channel_place like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or wd_type_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+    </where>
+    <if test="map.start != null and map.pageSize != null">
+     limit #{map.start},#{map.pageSize}
+    </if>
+  </select>
+  
+  <select id="selectWarnDetailcountByParaMap" parameterType="java.util.Map"  resultType="java.lang.Integer">
+    select 
+    	count(1)
+    from warn_detail
+    <where>
+    	1=1
+    	<if test="map.carId != null">
+       	 and wd_car_id = #{map.carId,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.warnCTime != null">
+        	<![CDATA[ and find_in_set(#{map.warnCTime,jdbcType=VARCHAR}, wd_udf_2)]]>  
+      	</if>
+      	<if test="map.keyWord != null">
+      		and (wd_channel_place like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or wd_type_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+    </where>
+  </select>
+</mapper>

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.CarEarlyWarningMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.CarEarlyWarning">
+    <id column="w_id" jdbcType="BIGINT" property="wId" />
+    <result column="w_car_num" jdbcType="VARCHAR" property="wCarNum" />
+    <result column="w_channel_code" jdbcType="VARCHAR" property="wChannelCode" />
+    <result column="w_channel_name" jdbcType="VARCHAR" property="wChannelName" />
+    <result column="w_gps_x" jdbcType="DOUBLE" property="wGpsX" />
+    <result column="w_gps_y" jdbcType="DOUBLE" property="wGpsY" />
+    <result column="w_cap_date_str" jdbcType="VARCHAR" property="wCapDateStr" />
+    <result column="w_img_url" jdbcType="VARCHAR" property="wImgUrl" />
+    <result column="w_udf_1" jdbcType="VARCHAR" property="wUdf1" />
+    <result column="w_udf_2" jdbcType="VARCHAR" property="wUdf2" />
+    <result column="w_udf_3" jdbcType="VARCHAR" property="wUdf3" />
+    <result column="w_udf_4" jdbcType="VARCHAR" property="wUdf4" />
+    <result column="w_udf_5" jdbcType="VARCHAR" property="wUdf5" />
+    <result column="warn_count" property="warnCount" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.bayee.model.CarEarlyWarning">
+    <result column="w_info" jdbcType="LONGVARCHAR" property="wInfo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    w_id, w_car_num, w_channel_code, w_channel_name, w_gps_x, w_gps_y, w_cap_date_str, 
+    w_img_url, w_udf_1, w_udf_2, w_udf_3, w_udf_4, w_udf_5
+  </sql>
+  <sql id="Blob_Column_List">
+    w_info
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from car_early_warning
+    where w_id = #{wId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from car_early_warning
+    where w_id = #{wId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bayee.model.CarEarlyWarning">
+    insert into car_early_warning (w_id, w_car_num, w_channel_code, 
+      w_channel_name, w_gps_x, w_gps_y, 
+      w_cap_date_str, w_img_url, w_udf_1, 
+      w_udf_2, w_udf_3, w_udf_4, 
+      w_udf_5, w_info)
+    values (#{wId,jdbcType=BIGINT}, #{wCarNum,jdbcType=VARCHAR}, #{wChannelCode,jdbcType=VARCHAR}, 
+      #{wChannelName,jdbcType=VARCHAR}, #{wGpsX,jdbcType=DOUBLE}, #{wGpsY,jdbcType=DOUBLE}, 
+      #{wCapDateStr,jdbcType=VARCHAR}, #{wImgUrl,jdbcType=VARCHAR}, #{wUdf1,jdbcType=VARCHAR}, 
+      #{wUdf2,jdbcType=VARCHAR}, #{wUdf3,jdbcType=VARCHAR}, #{wUdf4,jdbcType=VARCHAR}, 
+      #{wUdf5,jdbcType=VARCHAR}, #{wInfo,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.CarEarlyWarning">
+    insert into car_early_warning
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wId != null">
+        w_id,
+      </if>
+      <if test="wCarNum != null">
+        w_car_num,
+      </if>
+      <if test="wChannelCode != null">
+        w_channel_code,
+      </if>
+      <if test="wChannelName != null">
+        w_channel_name,
+      </if>
+      <if test="wGpsX != null">
+        w_gps_x,
+      </if>
+      <if test="wGpsY != null">
+        w_gps_y,
+      </if>
+      <if test="wCapDateStr != null">
+        w_cap_date_str,
+      </if>
+      <if test="wImgUrl != null">
+        w_img_url,
+      </if>
+      <if test="wUdf1 != null">
+        w_udf_1,
+      </if>
+      <if test="wUdf2 != null">
+        w_udf_2,
+      </if>
+      <if test="wUdf3 != null">
+        w_udf_3,
+      </if>
+      <if test="wUdf4 != null">
+        w_udf_4,
+      </if>
+      <if test="wUdf5 != null">
+        w_udf_5,
+      </if>
+      <if test="wInfo != null">
+        w_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wId != null">
+        #{wId,jdbcType=BIGINT},
+      </if>
+      <if test="wCarNum != null">
+        #{wCarNum,jdbcType=VARCHAR},
+      </if>
+      <if test="wChannelCode != null">
+        #{wChannelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="wChannelName != null">
+        #{wChannelName,jdbcType=VARCHAR},
+      </if>
+      <if test="wGpsX != null">
+        #{wGpsX,jdbcType=DOUBLE},
+      </if>
+      <if test="wGpsY != null">
+        #{wGpsY,jdbcType=DOUBLE},
+      </if>
+      <if test="wCapDateStr != null">
+        #{wCapDateStr,jdbcType=VARCHAR},
+      </if>
+      <if test="wImgUrl != null">
+        #{wImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="wUdf1 != null">
+        #{wUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="wUdf2 != null">
+        #{wUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="wUdf3 != null">
+        #{wUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="wUdf4 != null">
+        #{wUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="wUdf5 != null">
+        #{wUdf5,jdbcType=VARCHAR},
+      </if>
+      <if test="wInfo != null">
+        #{wInfo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bayee.model.CarEarlyWarning">
+    update car_early_warning
+    <set>
+      <if test="wCarNum != null">
+        w_car_num = #{wCarNum,jdbcType=VARCHAR},
+      </if>
+      <if test="wChannelCode != null">
+        w_channel_code = #{wChannelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="wChannelName != null">
+        w_channel_name = #{wChannelName,jdbcType=VARCHAR},
+      </if>
+      <if test="wGpsX != null">
+        w_gps_x = #{wGpsX,jdbcType=DOUBLE},
+      </if>
+      <if test="wGpsY != null">
+        w_gps_y = #{wGpsY,jdbcType=DOUBLE},
+      </if>
+      <if test="wCapDateStr != null">
+        w_cap_date_str = #{wCapDateStr,jdbcType=VARCHAR},
+      </if>
+      <if test="wImgUrl != null">
+        w_img_url = #{wImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="wUdf1 != null">
+        w_udf_1 = #{wUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="wUdf2 != null">
+        w_udf_2 = #{wUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="wUdf3 != null">
+        w_udf_3 = #{wUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="wUdf4 != null">
+        w_udf_4 = #{wUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="wUdf5 != null">
+        w_udf_5 = #{wUdf5,jdbcType=VARCHAR},
+      </if>
+      <if test="wInfo != null">
+        w_info = #{wInfo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where w_id = #{wId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bayee.model.CarEarlyWarning">
+    update car_early_warning
+    set w_car_num = #{wCarNum,jdbcType=VARCHAR},
+      w_channel_code = #{wChannelCode,jdbcType=VARCHAR},
+      w_channel_name = #{wChannelName,jdbcType=VARCHAR},
+      w_gps_x = #{wGpsX,jdbcType=DOUBLE},
+      w_gps_y = #{wGpsY,jdbcType=DOUBLE},
+      w_cap_date_str = #{wCapDateStr,jdbcType=VARCHAR},
+      w_img_url = #{wImgUrl,jdbcType=VARCHAR},
+      w_udf_1 = #{wUdf1,jdbcType=VARCHAR},
+      w_udf_2 = #{wUdf2,jdbcType=VARCHAR},
+      w_udf_3 = #{wUdf3,jdbcType=VARCHAR},
+      w_udf_4 = #{wUdf4,jdbcType=VARCHAR},
+      w_udf_5 = #{wUdf5,jdbcType=VARCHAR},
+      w_info = #{wInfo,jdbcType=LONGVARCHAR}
+    where w_id = #{wId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bayee.model.CarEarlyWarning">
+    update car_early_warning
+    set w_car_num = #{wCarNum,jdbcType=VARCHAR},
+      w_channel_code = #{wChannelCode,jdbcType=VARCHAR},
+      w_channel_name = #{wChannelName,jdbcType=VARCHAR},
+      w_gps_x = #{wGpsX,jdbcType=DOUBLE},
+      w_gps_y = #{wGpsY,jdbcType=DOUBLE},
+      w_cap_date_str = #{wCapDateStr,jdbcType=VARCHAR},
+      w_img_url = #{wImgUrl,jdbcType=VARCHAR},
+      w_udf_1 = #{wUdf1,jdbcType=VARCHAR},
+      w_udf_2 = #{wUdf2,jdbcType=VARCHAR},
+      w_udf_3 = #{wUdf3,jdbcType=VARCHAR},
+      w_udf_4 = #{wUdf4,jdbcType=VARCHAR},
+      w_udf_5 = #{wUdf5,jdbcType=VARCHAR}
+    where w_id = #{wId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectCarEarlyWarningInfo" parameterType="java.util.Map" resultMap="ResultMapWithBLOBs">
+    select 
+     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from car_early_warning w
+    <where>
+    	1=1
+      	<if test="map.warnDate!=null">
+             <![CDATA[ AND date_format(w_cap_date_str,'%Y-%m-%d')= #{map.warnDate}]]>
+   		</if>
+    </where>
+   
+   
+  </select>
+  <select id="selectCarEarlyWarningInfoByParamMap" parameterType="java.util.Map" resultMap="ResultMapWithBLOBs">
+    select 
+     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    ,warn_count  
+    from car_early_warning w
+     join (select w_car_num as car_num,count(1) as warn_count, max(UNIX_TIMESTAMP(w_cap_date_str)) as last_warn_time from car_early_warning  group by w_car_num ) c_sum
+     on c_sum.car_num=w.w_car_num and c_sum.last_warn_time=UNIX_TIMESTAMP(w.w_cap_date_str)
+    <where>
+    	1=1
+      	<if test="map.keyWord != null">
+      		and (w_channel_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or w_car_num like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+      	<if test="map.startDate!=null">
+             <![CDATA[ AND UNIX_TIMESTAMP(#{map.startDate}) <=  UNIX_TIMESTAMP(w_cap_date_str)]]>
+        </if>
+        <if test="map.endDate!=null">
+             <![CDATA[ AND UNIX_TIMESTAMP(#{map.endDate}) >= UNIX_TIMESTAMP(w_cap_date_str)]]>
+        </if>
+    </where>
+    	order by last_warn_time desc
+    <if test="map.start != null and map.pageSize != null">
+     limit #{map.start},#{map.pageSize}
+    </if>
+  </select>
+   <select id="selectCarEarlyWarningCountByParamMap" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select  count(1)
+    from car_early_warning w
+     join (select w_car_num as car_num,max(UNIX_TIMESTAMP(w_cap_date_str)) as last_warn_time from car_early_warning  group by w_car_num ) c_sum
+     on c_sum.car_num=w.w_car_num and c_sum.last_warn_time=UNIX_TIMESTAMP(w.w_cap_date_str)
+   <where>
+    	1=1
+      	<if test="map.keyWord != null">
+      		and (w_channel_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or w_car_num like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+      	<if test="map.startDate!=null">
+             <![CDATA[ AND UNIX_TIMESTAMP(#{map.startDate}) <=  UNIX_TIMESTAMP(w_cap_date_str)]]>
+        </if>
+        <if test="map.endDate!=null">
+             <![CDATA[ AND UNIX_TIMESTAMP(#{map.endDate}) >= UNIX_TIMESTAMP(w_cap_date_str)]]>
+        </if>
+    </where>
+  </select>
+  
+ <select id="getTopFiveChannelInfo"  resultMap="BaseResultMap">
+ 	select* from 
+ 		(select 
+ 			w_channel_name,
+ 			count(1) as warn_count
+ 	 	from car_early_warning 
+ 	 	group by w_channel_code) tmp
+ 	 	order by tmp.warn_count
+ 	 	limit 0,5
+ </select>
+</mapper>

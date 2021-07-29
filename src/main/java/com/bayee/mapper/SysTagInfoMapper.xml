@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.SysTagInfoMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.SysTagInfo">
+    <id column="tag_id" jdbcType="INTEGER" property="tagId" />
+    <result column="tag_name" jdbcType="VARCHAR" property="tagName" />
+    <result column="tag_p_id" jdbcType="INTEGER" property="tagPId" />
+    <result column="tag_type" jdbcType="INTEGER" property="tagType" />
+    <result column="tag_remark" jdbcType="VARCHAR" property="tagRemark" />
+    <result column="tag_status" jdbcType="INTEGER" property="tagStatus" />
+    <result column="tag_udf_1" jdbcType="VARCHAR" property="tagUdf1" />
+    <result column="tag_udf_2" jdbcType="VARCHAR" property="tagUdf2" />
+    <result column="tag_udf_3" jdbcType="VARCHAR" property="tagUdf3" />
+    <result column="tag_udf_4" jdbcType="VARCHAR" property="tagUdf4" />
+    <result column="tag_udf_5" jdbcType="VARCHAR" property="tagUdf5" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_by_name" jdbcType="VARCHAR" property="createByName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap id="SysTagChirdObjectResultMap" type="com.bayee.model.SysTagChirdObject">
+    <id column="obj_id" jdbcType="INTEGER" property="objId" />
+    <result column="obj_name" jdbcType="VARCHAR" property="objName" />
+    <result column="obj_type" jdbcType="VARCHAR" property="objType" />
+    <result column="obj_code" jdbcType="VARCHAR" property="objCode" />
+    <result column="obj_parent_id" jdbcType="VARCHAR" property="objParentId" />
+    <result column="chird_count" jdbcType="INTEGER" property="chirdCount" />
+    <result column="type_name" jdbcType="INTEGER" property="typeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tag_id, tag_name, tag_p_id, tag_type, tag_remark, tag_status, tag_udf_1, tag_udf_2, 
+    tag_udf_3, tag_udf_4, tag_udf_5,create_by,create_by_name,create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_tag_info
+    where tag_id = #{tagId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_tag_info
+    where tag_id = #{tagId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bayee.model.SysTagInfo">
+    insert into sys_tag_info (tag_id, tag_name, tag_p_id, 
+      tag_type, tag_remark, tag_status, 
+      tag_udf_1, tag_udf_2, tag_udf_3, 
+      tag_udf_4, tag_udf_5,create_by,create_by_name,create_time)
+    values (#{tagId,jdbcType=INTEGER}, #{tagName,jdbcType=VARCHAR}, #{tagPId,jdbcType=INTEGER}, 
+      #{tagType,jdbcType=INTEGER}, #{tagRemark,jdbcType=VARCHAR}, #{tagStatus,jdbcType=INTEGER}, 
+      #{tagUdf1,jdbcType=VARCHAR}, #{tagUdf2,jdbcType=VARCHAR}, #{tagUdf3,jdbcType=VARCHAR}, 
+      #{tagUdf4,jdbcType=VARCHAR}, #{tagUdf5,jdbcType=VARCHAR},#{createBy,jdbcType=VARCHAR},
+      #{createByName,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.SysTagInfo">
+    insert into sys_tag_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tagId != null">
+        tag_id,
+      </if>
+      <if test="tagName != null">
+        tag_name,
+      </if>
+      <if test="tagPId != null">
+        tag_p_id,
+      </if>
+      <if test="tagType != null">
+        tag_type,
+      </if>
+      <if test="tagRemark != null">
+        tag_remark,
+      </if>
+      <if test="tagStatus != null">
+        tag_status,
+      </if>
+      <if test="tagUdf1 != null">
+        tag_udf_1,
+      </if>
+      <if test="tagUdf2 != null">
+        tag_udf_2,
+      </if>
+      <if test="tagUdf3 != null">
+        tag_udf_3,
+      </if>
+      <if test="tagUdf4 != null">
+        tag_udf_4,
+      </if>
+      <if test="tagUdf5 != null">
+        tag_udf_5,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createByName != null">
+        create_by_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tagId != null">
+        #{tagId,jdbcType=INTEGER},
+      </if>
+      <if test="tagName != null">
+        #{tagName,jdbcType=VARCHAR},
+      </if>
+      <if test="tagPId != null">
+        #{tagPId,jdbcType=INTEGER},
+      </if>
+      <if test="tagType != null">
+        #{tagType,jdbcType=INTEGER},
+      </if>
+      <if test="tagRemark != null">
+        #{tagRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="tagStatus != null">
+        #{tagStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tagUdf1 != null">
+        #{tagUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="tagUdf2 != null">
+        #{tagUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="tagUdf3 != null">
+        #{tagUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="tagUdf4 != null">
+        #{tagUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="tagUdf5 != null">
+        #{tagUdf5,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createByName != null">
+        #{createByName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bayee.model.SysTagInfo">
+    update sys_tag_info
+    <set>
+      <if test="tagName != null">
+        tag_name = #{tagName,jdbcType=VARCHAR},
+      </if>
+      <if test="tagPId != null">
+        tag_p_id = #{tagPId,jdbcType=INTEGER},
+      </if>
+      <if test="tagType != null">
+        tag_type = #{tagType,jdbcType=INTEGER},
+      </if>
+      <if test="tagRemark != null">
+        tag_remark = #{tagRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="tagStatus != null">
+        tag_status = #{tagStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tagUdf1 != null">
+        tag_udf_1 = #{tagUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="tagUdf2 != null">
+        tag_udf_2 = #{tagUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="tagUdf3 != null">
+        tag_udf_3 = #{tagUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="tagUdf4 != null">
+        tag_udf_4 = #{tagUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="tagUdf5 != null">
+        tag_udf_5 = #{tagUdf5,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by=#{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createByName != null">
+        create_by_name=#{createByName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time=#{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where tag_id = #{tagId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bayee.model.SysTagInfo">
+    update sys_tag_info
+    set tag_name = #{tagName,jdbcType=VARCHAR},
+      tag_p_id = #{tagPId,jdbcType=INTEGER},
+      tag_type = #{tagType,jdbcType=INTEGER},
+      tag_remark = #{tagRemark,jdbcType=VARCHAR},
+      tag_status = #{tagStatus,jdbcType=INTEGER},
+      tag_udf_1 = #{tagUdf1,jdbcType=VARCHAR},
+      tag_udf_2 = #{tagUdf2,jdbcType=VARCHAR},
+      tag_udf_3 = #{tagUdf3,jdbcType=VARCHAR},
+      tag_udf_4 = #{tagUdf4,jdbcType=VARCHAR},
+      tag_udf_5 = #{tagUdf5,jdbcType=VARCHAR},
+      create_by =#{createBy,jdbcType=VARCHAR},
+      create_by_name=#{createByName,jdbcType=VARCHAR},
+      create_time=#{createTime,jdbcType=TIMESTAMP}
+    where tag_id = #{tagId,jdbcType=INTEGER}
+  </update>
+  <select id="selectSysTagInfoByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+     select 
+    <include refid="Base_Column_List" />
+    from sys_tag_info
+     <where>
+    	1=1
+     	<if test="map.tagPId != null">
+     		and tag_p_id = #{map.tagPId}
+      	</if>
+      	<if test="map.tagType != null">
+     		and tag_type = #{map.tagType}
+      	</if>
+      	<if test="map.tagStatus != null">
+     		and tag_status = #{map.tagStatus}
+      	</if>
+      	<if test="map.tagName != null">
+      		and tag_name like concat('%',#{map.tagName,jdbcType=VARCHAR},'%')  
+      	</if>
+      	<if test="map.keyWord != null">
+      		and (tag_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      			or tag_remark like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)
+      	</if>
+    </where>
+  </select>
+  
+  <select id="selectChirdDataByMap" parameterType="java.util.Map" resultMap="SysTagChirdObjectResultMap">
+     select 
+     	obj_id,obj_name,obj_type,obj_code,obj_parent_id,chird_count,type_name
+     	from (
+     		<if test="map.selectType != null and (map.selectType==1 or map.selectType==3) ">
+	     		select tag_id as obj_id,
+	     			   tag_name as obj_name,
+	     			   tag_p_id as obj_parent_id,
+	     			   tag_code as obj_code,
+	     			   tag_status as obj_tag_status, 
+	     			   'T' as obj_type,
+	     			   tt.type_name,
+	     			   (select count(1) from sys_tag_palce_relation r where r.rel_tag_id=t.tag_id and r.rel_status = 0) as chird_count
+	     		 from sys_tag_info t,sys_tag_type_info tt
+	     		 where t.tag_type =tt.type_id
+	     		<if test="map.tagPId != null">
+	     			and tag_p_id = #{map.tagPId}
+	      		</if>
+      		</if>
+      		<if test="map.selectType != null and map.selectType ==3">
+      			union
+      		</if>
+      		<if test="map.selectType != null and (map.selectType == 2 or map.selectType == 3)">
+	      		select 
+	      			p.palce_id as obj_id,
+	      			p.palce_name as obj_name,
+	      			r.rel_tag_id as obj_parent_id,
+	      			p.palce_no as obj_code,
+	      			'P' as obj_type,
+	      			0 as obj_tag_status, 
+	      			0  as chird_count,
+	      			'点位' as type_name
+	      		from
+	      		sys_tag_palce_relation r,sys_palce_info p
+	      		where p.palce_id=r.rel_place_id
+	      		and r.rel_status = 0
+	      		<if test="map.tagPId != null">
+	     			and r.rel_tag_id= #{map.tagPId}
+	      		</if>
+      		</if>
+      		
+     	)tmp
+     <where>
+    	1=1
+      	<if test="map.tagType != null">
+     		and obj_type = #{map.tagType}
+      	</if>
+      	<if test="map.tagStatus != null">
+      		and obj_tag_status=#{map.tagStatus}
+      	</if>
+      	<if test="map.keyWord != null">
+      		and obj_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')  
+      	</if>
+      	order by obj_id
+    </where>
+    <if test="map.start != null and map.pageSize != null">
+      limit #{map.start},#{map.pageSize}
+    </if>
+  </select>
+  
+  <select id="selectChirdDataCountByMap" parameterType="java.util.Map" resultType="java.lang.Integer">
+     select 
+     	count(1)
+     	from (
+     		<if test="map.selectType != null and (map.selectType==1 or map.selectType==3) ">
+	     		select tag_id as obj_id,
+	     			   tag_name as obj_name,
+	     			   tag_p_id as obj_parent_id,
+	     			   tag_code as obj_code,
+	     			   tag_status as obj_tag_status, 
+	     			   'T' as obj_type,
+	     			   tt.type_name
+	     		 from sys_tag_info t,sys_tag_type_info tt
+	     		 where t.tag_type =tt.type_id
+	     		<if test="map.tagPId != null">
+	     			and tag_p_id = #{map.tagPId}
+	      		</if>
+      		</if>
+      		<if test="map.selectType != null and map.selectType ==3">
+      			union
+      		</if>
+      		<if test="map.selectType != null and (map.selectType == 2 or map.selectType == 3)">
+	      		select 
+	      			p.palce_id as obj_id,
+	      			p.palce_name as obj_name,
+	      			r.rel_tag_id as obj_parent_id,
+	      			p.palce_no as obj_code,
+	      			'P' as obj_type,
+	      			0 as obj_tag_status, 
+	      			0  as chird_count,
+	      			'点位' as type_name
+	      		from
+	      		sys_tag_palce_relation r,sys_palce_info p
+	      		where p.palce_id=r.rel_place_id
+	      		and r.rel_status = 0
+	      		<if test="map.tagPId != null">
+	     			and r.rel_tag_id= #{map.tagPId}
+	      		</if>
+      		</if>
+      		
+     	)tmp
+     <where>
+    	1=1
+      	<if test="map.tagType != null">
+     		and obj_type = #{map.tagType}
+      	</if>
+      	<if test="map.tagStatus != null">
+      		and obj_tag_status=#{map.tagStatus}
+      	</if>
+      	<if test="map.keyWord != null">
+      		and obj_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')  
+      	</if>
+    </where>
+  </select>
+  
+  <select id="selectDataByTypeMap" parameterType="java.util.Map" resultMap="SysTagChirdObjectResultMap">
+     select 
+	      			p.palce_id as obj_id,
+	      			p.palce_name as obj_name,
+	      			r.rel_tag_id as obj_parent_id,
+	      			p.palce_no as obj_code,
+	      			t.tag_type as obj_type
+	      		from
+	      		sys_tag_palce_relation r,sys_palce_info p,sys_tag_info t
+	      		where p.palce_id=r.rel_place_id
+	      		and r.rel_status = 0
+	      		and t.tag_status=0
+	      		and r.rel_tag_id=t.tag_id
+	      		and t.tag_type=#{map.tagType}
+  </select>
+</mapper>

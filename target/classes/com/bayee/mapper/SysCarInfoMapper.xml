@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.SysCarInfoMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.SysCarInfo">
+    <id column="car_id" jdbcType="INTEGER" property="carId" />
+    <result column="car_type" jdbcType="INTEGER" property="carType" />
+    <result column="car_num" jdbcType="VARCHAR" property="carNum" />
+    <result column="car_user" jdbcType="VARCHAR" property="carUser" />
+    <result column="car_user_id_card" jdbcType="VARCHAR" property="carUserIdCard" />
+    <result column="car_user_company" jdbcType="VARCHAR" property="carUserCompany" />
+    <result column="car_user_mobile" jdbcType="VARCHAR" property="carUserMobile" />
+    <result column="car_udf_1" jdbcType="VARCHAR" property="carUdf1" />
+    <result column="car_udf_2" jdbcType="VARCHAR" property="carUdf2" />
+    <result column="car_udf_3" jdbcType="VARCHAR" property="carUdf3" />
+    <result column="car_udf_4" jdbcType="VARCHAR" property="carUdf4" />
+    <result column="car_udf_5" jdbcType="VARCHAR" property="carUdf5" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="card_type" jdbcType="VARCHAR" property="cardType" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_by_name" jdbcType="VARCHAR" property="updateByName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by_name" jdbcType="VARCHAR" property="createByName" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="conId"  property="con_id" />
+  </resultMap>
+  <sql id="Base_Column_List">
+     car_id, car_type, car_num, car_user, car_user_id_card, car_user_company, car_user_mobile, 
+    car_udf_1, car_udf_2, car_udf_3, car_udf_4, car_udf_5, create_by, create_time, card_type, 
+    update_by, update_by_name, update_time, create_by_name, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_car_info
+    where car_id = #{carId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_car_info
+    where car_id = #{carId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bayee.model.SysCarInfo">
+     insert into sys_car_info (car_id, car_type, car_num, 
+      car_user, car_user_id_card, car_user_company, 
+      car_user_mobile, car_udf_1, car_udf_2, 
+      car_udf_3, car_udf_4, car_udf_5, 
+      create_by, create_time, card_type, 
+      update_by, update_by_name, update_time, 
+      create_by_name, remark)
+    values (#{carId,jdbcType=INTEGER}, #{carType,jdbcType=INTEGER}, #{carNum,jdbcType=VARCHAR}, 
+      #{carUser,jdbcType=VARCHAR}, #{carUserIdCard,jdbcType=VARCHAR}, #{carUserCompany,jdbcType=VARCHAR}, 
+      #{carUserMobile,jdbcType=VARCHAR}, #{carUdf1,jdbcType=VARCHAR}, #{carUdf2,jdbcType=VARCHAR}, 
+      #{carUdf3,jdbcType=VARCHAR}, #{carUdf4,jdbcType=VARCHAR}, #{carUdf5,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{cardType,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateByName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createByName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.SysCarInfo">
+    insert into sys_car_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="carType != null">
+        car_type,
+      </if>
+      <if test="carNum != null">
+        car_num,
+      </if>
+      <if test="carUser != null">
+        car_user,
+      </if>
+      <if test="carUserIdCard != null">
+        car_user_id_card,
+      </if>
+      <if test="carUserCompany != null">
+        car_user_company,
+      </if>
+      <if test="carUserMobile != null">
+        car_user_mobile,
+      </if>
+      <if test="carUdf1 != null">
+        car_udf_1,
+      </if>
+      <if test="carUdf2 != null">
+        car_udf_2,
+      </if>
+      <if test="carUdf3 != null">
+        car_udf_3,
+      </if>
+      <if test="carUdf4 != null">
+        car_udf_4,
+      </if>
+      <if test="carUdf5 != null">
+        car_udf_5,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="cardType != null">
+        card_type,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateByName != null">
+        update_by_name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createByName != null">
+        create_by_name,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        #{carId,jdbcType=INTEGER},
+      </if>
+      <if test="carType != null">
+        #{carType,jdbcType=INTEGER},
+      </if>
+      <if test="carNum != null">
+        #{carNum,jdbcType=VARCHAR},
+      </if>
+      <if test="carUser != null">
+        #{carUser,jdbcType=VARCHAR},
+      </if>
+      <if test="carUserIdCard != null">
+        #{carUserIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="carUserCompany != null">
+        #{carUserCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="carUserMobile != null">
+        #{carUserMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="carUdf1 != null">
+        #{carUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="carUdf2 != null">
+        #{carUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="carUdf3 != null">
+        #{carUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="carUdf4 != null">
+        #{carUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="carUdf5 != null">
+        #{carUdf5,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cardType != null">
+        #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateByName != null">
+        #{updateByName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createByName != null">
+        #{createByName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bayee.model.SysCarInfo">
+    update sys_car_info
+    <set>
+      <if test="carType != null">
+        car_type = #{carType,jdbcType=INTEGER},
+      </if>
+      <if test="carNum != null">
+        car_num = #{carNum,jdbcType=VARCHAR},
+      </if>
+      <if test="carUser != null">
+        car_user = #{carUser,jdbcType=VARCHAR},
+      </if>
+      <if test="carUserIdCard != null">
+        car_user_id_card = #{carUserIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="carUserCompany != null">
+        car_user_company = #{carUserCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="carUserMobile != null">
+        car_user_mobile = #{carUserMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="carUdf1 != null">
+        car_udf_1 = #{carUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="carUdf2 != null">
+        car_udf_2 = #{carUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="carUdf3 != null">
+        car_udf_3 = #{carUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="carUdf4 != null">
+        car_udf_4 = #{carUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="carUdf5 != null">
+        car_udf_5 = #{carUdf5,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cardType != null">
+        card_type = #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateByName != null">
+        update_by_name = #{updateByName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createByName != null">
+        create_by_name = #{createByName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bayee.model.SysCarInfo">
+     update sys_car_info
+    set car_type = #{carType,jdbcType=INTEGER},
+      car_num = #{carNum,jdbcType=VARCHAR},
+      car_user = #{carUser,jdbcType=VARCHAR},
+      car_user_id_card = #{carUserIdCard,jdbcType=VARCHAR},
+      car_user_company = #{carUserCompany,jdbcType=VARCHAR},
+      car_user_mobile = #{carUserMobile,jdbcType=VARCHAR},
+      car_udf_1 = #{carUdf1,jdbcType=VARCHAR},
+      car_udf_2 = #{carUdf2,jdbcType=VARCHAR},
+      car_udf_3 = #{carUdf3,jdbcType=VARCHAR},
+      car_udf_4 = #{carUdf4,jdbcType=VARCHAR},
+      car_udf_5 = #{carUdf5,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      card_type = #{cardType,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_by_name = #{updateByName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by_name = #{createByName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where car_id = #{carId,jdbcType=INTEGER}
+  </update>
+   <select id="selectSysCarListByParamMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    ,(select c_id from car_control_info  where c_car_num=car_num and c_status=0) as con_id
+    from sys_car_info
+     <where>
+    	1=1
+     	<if test="map.carType != null">
+     		and car_type = #{map.carType}
+      	</if>
+      	<if test="map.keyWord != null">
+      		and (car_user like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or car_num like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      			or car_user_company like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+      	<if test="map.carNum != null">
+      		and car_num=#{map.carNum}
+      	</if>
+      	order by create_time
+    </where>
+   <if test="map.start != null and map.pageSize != null">
+      limit #{map.start},#{map.pageSize}
+    </if>
+  </select>
+  
+  <select id="selectSysCarCountByParamMap" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(1)
+    from sys_car_info
+     <where>
+    	1=1
+     	<if test="map.carType != null">
+     		and car_type = #{map.carType}
+      	</if>
+      	<if test="map.keyWord != null">
+      		and (car_user like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or car_num like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      			or car_user_company like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+      	<if test="map.carNum != null">
+      		and car_num=#{map.carNum}
+      	</if>
+    </where>
+  </select>
+</mapper>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.SysPalceInfoMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.SysPalceInfo">
+    <result column="palce_id" jdbcType="INTEGER" property="palceId" />
+    <result column="palce_name" jdbcType="VARCHAR" property="palceName" />
+    <result column="palce_x" jdbcType="VARCHAR" property="palceX" />
+    <result column="palce_y" jdbcType="VARCHAR" property="palceY" />
+    <result column="palce_no" jdbcType="VARCHAR" property="palceNo" />
+  </resultMap>
+   <sql id="Base_Column_List">
+    palce_id, palce_name, palce_x, palce_y, palce_no
+  </sql>
+  <insert id="insert" parameterType="com.bayee.model.SysPalceInfo">
+    insert into sys_palce_info (palce_id, palce_name, palce_x, 
+      palce_y, palce_no)
+    values (#{palceId,jdbcType=INTEGER}, #{palceName,jdbcType=VARCHAR}, #{palceX,jdbcType=VARCHAR}, 
+      #{palceY,jdbcType=VARCHAR}, #{palceNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.SysPalceInfo">
+    insert into sys_palce_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="palceId != null">
+        palce_id,
+      </if>
+      <if test="palceName != null">
+        palce_name,
+      </if>
+      <if test="palceX != null">
+        palce_x,
+      </if>
+      <if test="palceY != null">
+        palce_y,
+      </if>
+      <if test="palceNo != null">
+        palce_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="palceId != null">
+        #{palceId,jdbcType=INTEGER},
+      </if>
+      <if test="palceName != null">
+        #{palceName,jdbcType=VARCHAR},
+      </if>
+      <if test="palceX != null">
+        #{palceX,jdbcType=VARCHAR},
+      </if>
+      <if test="palceY != null">
+        #{palceY,jdbcType=VARCHAR},
+      </if>
+      <if test="palceNo != null">
+        #{palceNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="selectSysPalceInfoByParams" parameterType="com.bayee.model.SysPalceInfo" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_palce_info
+    <where>
+    	1=1
+    	<if test="palceId != null">
+        	and palce_id=#{palceId}
+      	</if>
+      	<if test="palceName != null">
+       	 	and (palce_name like concat('%',#{palceName,jdbcType=VARCHAR},'%') or palce_no=#{palceName,jdbcType=VARCHAR})
+      	</if>
+      	<if test="palceX != null">
+       		 and palce_x=#{palceX}
+      	</if>
+      	<if test="palceY != null">
+        	and palce_y=#{palceY}
+      	</if>
+      	<if test="palceNo != null">
+        	and palce_no=#{palceNo}
+      	</if>
+      	<if test="limitCount != null and limitCount!=0">
+        	limit 0,#{limitCount}
+      	</if>
+    </where>
+  </select>
+  
+  <select id="selectSysPalceInfoByParamMap" parameterType="com.bayee.model.SysPalceInfo" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_palce_info
+    <where>
+    	1=1
+    	<if test="map.palceId != null">
+        	and palce_id=#{map.palceId}
+      	</if>
+      	<if test="map.keyWord != null">
+       	 	and (palce_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') or palce_no=#{map.keyWord,jdbcType=VARCHAR})
+      	</if>
+      	<if test="map.palceX != null">
+       		 and palce_x=#{palceX}
+      	</if>
+      	<if test="map.palceY != null">
+        	and palce_y=#{palceY}
+      	</if>
+      	<if test="map.palceNo != null">
+        	and palce_no=#{palceNo}
+      	</if>
+      	order by palce_id
+      <if test="map.start != null and map.pageSize != null">
+      	limit #{map.start},#{map.pageSize}
+      </if>
+    </where>
+  </select>
+  
+  <select id="selectSysPalceInfoCountByParamMap" parameterType="com.bayee.model.SysPalceInfo" resultType="java.lang.Integer">
+    select count(1)
+    from sys_palce_info
+    <where>
+    	1=1
+    	<if test="map.palceId != null">
+        	and palce_id=#{map.palceId}
+      	</if>
+      	<if test="map.keyWord != null">
+       	 	and (palce_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') or palce_no=#{map.keyWord,jdbcType=VARCHAR})
+      	</if>
+      	<if test="map.palceX != null">
+       		 and palce_x=#{palceX}
+      	</if>
+      	<if test="map.palceY != null">
+        	and palce_y=#{palceY}
+      	</if>
+      	<if test="map.palceNo != null">
+        	and palce_no=#{palceNo}
+      	</if>
+      	order by palce_id
+    </where>
+  </select>
+</mapper>

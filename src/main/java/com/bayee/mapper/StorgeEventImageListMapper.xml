@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.StorgeEventImageListMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.StorgeEventImageList">
+    <result column="img_Idx" jdbcType="INTEGER" property="imgIdx" />
+    <result column="parent_Img_Idx" jdbcType="INTEGER" property="parentImgIdx" />
+    <result column="cache_Url" jdbcType="VARCHAR" property="cacheUrl" />
+    <result column="img_Url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="img_Size" jdbcType="VARCHAR" property="imgSize" />
+    <result column="img_Pixel" jdbcType="VARCHAR" property="imgPixel" />
+    <result column="img_Type" jdbcType="INTEGER" property="imgType" />
+    <result column="obj_Left" jdbcType="INTEGER" property="objLeft" />
+    <result column="obj_Top" jdbcType="INTEGER" property="objTop" />
+    <result column="obj_Right" jdbcType="INTEGER" property="objRight" />
+    <result column="obj_Bottom" jdbcType="INTEGER" property="objBottom" />
+    <result column="img_Width" jdbcType="INTEGER" property="imgWidth" />
+    <result column="img_Height" jdbcType="INTEGER" property="imgHeight" />
+    <result column="pic_Record_Id" jdbcType="VARCHAR" property="picRecordId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.bayee.model.StorgeEventImageList">
+    insert into storge_event_image_list (img_Idx, parent_Img_Idx, cache_Url, 
+      img_Url, img_Size, img_Pixel, 
+      img_Type, obj_Left, obj_Top, 
+      obj_Right, obj_Bottom, img_Width, 
+      img_Height, pic_Record_Id)
+    values (#{imgIdx,jdbcType=INTEGER}, #{parentImgIdx,jdbcType=INTEGER}, #{cacheUrl,jdbcType=VARCHAR}, 
+      #{imgUrl,jdbcType=VARCHAR}, #{imgSize,jdbcType=VARCHAR}, #{imgPixel,jdbcType=VARCHAR}, 
+      #{imgType,jdbcType=INTEGER}, #{objLeft,jdbcType=INTEGER}, #{objTop,jdbcType=INTEGER}, 
+      #{objRight,jdbcType=INTEGER}, #{objBottom,jdbcType=INTEGER}, #{imgWidth,jdbcType=INTEGER}, 
+      #{imgHeight,jdbcType=INTEGER}, #{picRecordId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.StorgeEventImageList">
+    insert into storge_event_image_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="imgIdx != null">
+        img_Idx,
+      </if>
+      <if test="parentImgIdx != null">
+        parent_Img_Idx,
+      </if>
+      <if test="cacheUrl != null">
+        cache_Url,
+      </if>
+      <if test="imgUrl != null">
+        img_Url,
+      </if>
+      <if test="imgSize != null">
+        img_Size,
+      </if>
+      <if test="imgPixel != null">
+        img_Pixel,
+      </if>
+      <if test="imgType != null">
+        img_Type,
+      </if>
+      <if test="objLeft != null">
+        obj_Left,
+      </if>
+      <if test="objTop != null">
+        obj_Top,
+      </if>
+      <if test="objRight != null">
+        obj_Right,
+      </if>
+      <if test="objBottom != null">
+        obj_Bottom,
+      </if>
+      <if test="imgWidth != null">
+        img_Width,
+      </if>
+      <if test="imgHeight != null">
+        img_Height,
+      </if>
+      <if test="picRecordId != null">
+        pic_Record_Id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="imgIdx != null">
+        #{imgIdx,jdbcType=INTEGER},
+      </if>
+      <if test="parentImgIdx != null">
+        #{parentImgIdx,jdbcType=INTEGER},
+      </if>
+      <if test="cacheUrl != null">
+        #{cacheUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgSize != null">
+        #{imgSize,jdbcType=VARCHAR},
+      </if>
+      <if test="imgPixel != null">
+        #{imgPixel,jdbcType=VARCHAR},
+      </if>
+      <if test="imgType != null">
+        #{imgType,jdbcType=INTEGER},
+      </if>
+      <if test="objLeft != null">
+        #{objLeft,jdbcType=INTEGER},
+      </if>
+      <if test="objTop != null">
+        #{objTop,jdbcType=INTEGER},
+      </if>
+      <if test="objRight != null">
+        #{objRight,jdbcType=INTEGER},
+      </if>
+      <if test="objBottom != null">
+        #{objBottom,jdbcType=INTEGER},
+      </if>
+      <if test="imgWidth != null">
+        #{imgWidth,jdbcType=INTEGER},
+      </if>
+      <if test="imgHeight != null">
+        #{imgHeight,jdbcType=INTEGER},
+      </if>
+      <if test="picRecordId != null">
+        #{picRecordId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

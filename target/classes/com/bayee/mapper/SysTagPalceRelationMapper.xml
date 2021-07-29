@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.SysTagPalceRelationMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.SysTagPalceRelation">
+    <id column="rel_id" jdbcType="INTEGER" property="relId" />
+    <result column="rel_place_id" jdbcType="INTEGER" property="relPlaceId" />
+    <result column="rel_tag_id" jdbcType="INTEGER" property="relTagId" />
+    <result column="rel_status" jdbcType="INTEGER" property="relStatus" />
+    <result column="rel_udf_1" jdbcType="VARCHAR" property="relUdf1" />
+    <result column="rel_udf_2" jdbcType="VARCHAR" property="relUdf2" />
+    <result column="rel_udf_3" jdbcType="VARCHAR" property="relUdf3" />
+    <result column="rel_udf_4" jdbcType="VARCHAR" property="relUdf4" />
+    <result column="rel_udf_5" jdbcType="VARCHAR" property="relUdf5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rel_id, rel_place_id, rel_tag_id, rel_status, rel_udf_1, rel_udf_2, rel_udf_3, rel_udf_4, 
+    rel_udf_5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_tag_palce_relation
+    where rel_id = #{relId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_tag_palce_relation
+    where rel_id = #{relId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bayee.model.SysTagPalceRelation">
+    insert into sys_tag_palce_relation (rel_id, rel_place_id, rel_tag_id, 
+      rel_status, rel_udf_1, rel_udf_2, 
+      rel_udf_3, rel_udf_4, rel_udf_5
+      )
+    values (#{relId,jdbcType=INTEGER}, #{relPlaceId,jdbcType=INTEGER}, #{relTagId,jdbcType=INTEGER}, 
+      #{relStatus,jdbcType=INTEGER}, #{relUdf1,jdbcType=VARCHAR}, #{relUdf2,jdbcType=VARCHAR}, 
+      #{relUdf3,jdbcType=VARCHAR}, #{relUdf4,jdbcType=VARCHAR}, #{relUdf5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.SysTagPalceRelation">
+    insert into sys_tag_palce_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="relId != null">
+        rel_id,
+      </if>
+      <if test="relPlaceId != null">
+        rel_place_id,
+      </if>
+      <if test="relTagId != null">
+        rel_tag_id,
+      </if>
+      <if test="relStatus != null">
+        rel_status,
+      </if>
+      <if test="relUdf1 != null">
+        rel_udf_1,
+      </if>
+      <if test="relUdf2 != null">
+        rel_udf_2,
+      </if>
+      <if test="relUdf3 != null">
+        rel_udf_3,
+      </if>
+      <if test="relUdf4 != null">
+        rel_udf_4,
+      </if>
+      <if test="relUdf5 != null">
+        rel_udf_5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="relId != null">
+        #{relId,jdbcType=INTEGER},
+      </if>
+      <if test="relPlaceId != null">
+        #{relPlaceId,jdbcType=INTEGER},
+      </if>
+      <if test="relTagId != null">
+        #{relTagId,jdbcType=INTEGER},
+      </if>
+      <if test="relStatus != null">
+        #{relStatus,jdbcType=INTEGER},
+      </if>
+      <if test="relUdf1 != null">
+        #{relUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="relUdf2 != null">
+        #{relUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="relUdf3 != null">
+        #{relUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="relUdf4 != null">
+        #{relUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="relUdf5 != null">
+        #{relUdf5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bayee.model.SysTagPalceRelation">
+    update sys_tag_palce_relation
+    <set>
+      <if test="relPlaceId != null">
+        rel_place_id = #{relPlaceId,jdbcType=INTEGER},
+      </if>
+      <if test="relTagId != null">
+        rel_tag_id = #{relTagId,jdbcType=INTEGER},
+      </if>
+      <if test="relStatus != null">
+        rel_status = #{relStatus,jdbcType=INTEGER},
+      </if>
+      <if test="relUdf1 != null">
+        rel_udf_1 = #{relUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="relUdf2 != null">
+        rel_udf_2 = #{relUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="relUdf3 != null">
+        rel_udf_3 = #{relUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="relUdf4 != null">
+        rel_udf_4 = #{relUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="relUdf5 != null">
+        rel_udf_5 = #{relUdf5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rel_id = #{relId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bayee.model.SysTagPalceRelation">
+    update sys_tag_palce_relation
+    set rel_place_id = #{relPlaceId,jdbcType=INTEGER},
+      rel_tag_id = #{relTagId,jdbcType=INTEGER},
+      rel_status = #{relStatus,jdbcType=INTEGER},
+      rel_udf_1 = #{relUdf1,jdbcType=VARCHAR},
+      rel_udf_2 = #{relUdf2,jdbcType=VARCHAR},
+      rel_udf_3 = #{relUdf3,jdbcType=VARCHAR},
+      rel_udf_4 = #{relUdf4,jdbcType=VARCHAR},
+      rel_udf_5 = #{relUdf5,jdbcType=VARCHAR}
+    where rel_id = #{relId,jdbcType=INTEGER}
+  </update>
+  
+  <update id="deleteSysTagPalceRelationByMap" parameterType="java.util.Map">
+    update sys_tag_palce_relation
+    set rel_status = 1
+    <where>
+    	1=1
+    	<if test="map.relPlaceId != null">
+        	and rel_place_id=#{map.relPlaceId}
+      	</if>
+      	<if test="map.relTagId != null">
+        	and rel_tag_id=#{map.relTagId}
+      	</if>
+    </where>
+  </update>
+  
+  <select id="seleteSysTagPalceRelationByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />	
+    from 
+    sys_tag_palce_relation
+    <where>
+    	rel_status = 0
+    	<if test="map.relPlaceId != null">
+        	and rel_place_id=#{map.relPlaceId}
+      	</if>
+      	<if test="map.relTagId != null">
+        	and rel_tag_id=#{map.relTagId}
+      	</if>
+    </where>
+  </select>
+</mapper>

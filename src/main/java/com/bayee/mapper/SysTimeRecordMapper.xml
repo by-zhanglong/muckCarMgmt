@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.SysTimeRecordMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.SysTimeRecord">
+    <id column="rec_id" jdbcType="BIGINT" property="recId" />
+    <result column="rec_type" jdbcType="INTEGER" property="recType" />
+    <result column="rec_time" jdbcType="TIMESTAMP" property="recTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rec_id, rec_type, rec_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_time_record
+    where rec_id = #{recId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_time_record
+    where rec_id = #{recId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bayee.model.SysTimeRecord">
+    insert into sys_time_record (rec_id, rec_type, rec_time
+      )
+    values (#{recId,jdbcType=BIGINT}, #{recType,jdbcType=INTEGER}, #{recTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.SysTimeRecord">
+    insert into sys_time_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recId != null">
+        rec_id,
+      </if>
+      <if test="recType != null">
+        rec_type,
+      </if>
+      <if test="recTime != null">
+        rec_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recId != null">
+        #{recId,jdbcType=BIGINT},
+      </if>
+      <if test="recType != null">
+        #{recType,jdbcType=INTEGER},
+      </if>
+      <if test="recTime != null">
+        #{recTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bayee.model.SysTimeRecord">
+    update sys_time_record
+    <set>
+      <if test="recType != null">
+        rec_type = #{recType,jdbcType=INTEGER},
+      </if>
+      <if test="recTime != null">
+        rec_time = #{recTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where rec_id = #{recId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bayee.model.SysTimeRecord">
+    update sys_time_record
+    set rec_type = #{recType,jdbcType=INTEGER},
+      rec_time = #{recTime,jdbcType=TIMESTAMP}
+    where rec_id = #{recId,jdbcType=BIGINT}
+  </update>
+  <select id="selectMaxRecordTime" parameterType="java.util.Map" resultType="java.util.Date">
+        select max(rec_time) from sys_time_record where rec_time=#{map.recTime}
+  </select>
+</mapper>

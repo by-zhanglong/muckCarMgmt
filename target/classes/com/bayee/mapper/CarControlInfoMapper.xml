@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.CarControlInfoMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.CarControlInfo">
+    <id column="c_id" jdbcType="BIGINT" property="cId" />
+    <result column="c_car_num" jdbcType="VARCHAR" property="cCarNum" />
+    <result column="c_obj_code" jdbcType="VARCHAR" property="cObjCode" />
+    <result column="creat_by" jdbcType="VARCHAR" property="creatBy" />
+    <result column="create_by_name" jdbcType="VARCHAR" property="createByName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="c_status" jdbcType="INTEGER" property="cStatus" />
+    <result column="c_udf_1" jdbcType="VARCHAR" property="cUdf1" />
+    <result column="c_udf_2" jdbcType="VARCHAR" property="cUdf2" />
+    <result column="c_udf_3" jdbcType="VARCHAR" property="cUdf3" />
+    <result column="c_udf_4" jdbcType="VARCHAR" property="cUdf4" />
+    <result column="c_udf_5" jdbcType="VARCHAR" property="cUdf5" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_by_name" jdbcType="VARCHAR" property="updateByName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    c_id, c_car_num, c_obj_code, creat_by, create_by_name, create_time, c_status, c_udf_1, 
+    c_udf_2, c_udf_3, c_udf_4, c_udf_5,update_by,update_by_name,update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_control_info
+    where c_id = #{cId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from car_control_info
+    where c_id = #{cId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bayee.model.CarControlInfo">
+    insert into car_control_info (c_id, c_car_num, c_obj_code, 
+      creat_by, create_by_name, create_time, 
+      c_status, c_udf_1, c_udf_2, 
+      c_udf_3, c_udf_4, c_udf_5
+      )
+    values (#{cId,jdbcType=BIGINT}, #{cCarNum,jdbcType=VARCHAR}, #{cObjCode,jdbcType=VARCHAR}, 
+      #{creatBy,jdbcType=VARCHAR}, #{createByName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{cStatus,jdbcType=INTEGER}, #{cUdf1,jdbcType=VARCHAR}, #{cUdf2,jdbcType=VARCHAR}, 
+      #{cUdf3,jdbcType=VARCHAR}, #{cUdf4,jdbcType=VARCHAR}, #{cUdf5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.CarControlInfo">
+    insert into car_control_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="cCarNum != null">
+        c_car_num,
+      </if>
+      <if test="cObjCode != null">
+        c_obj_code,
+      </if>
+      <if test="creatBy != null">
+        creat_by,
+      </if>
+      <if test="createByName != null">
+        create_by_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="cStatus != null">
+        c_status,
+      </if>
+      <if test="cUdf1 != null">
+        c_udf_1,
+      </if>
+      <if test="cUdf2 != null">
+        c_udf_2,
+      </if>
+      <if test="cUdf3 != null">
+        c_udf_3,
+      </if>
+      <if test="cUdf4 != null">
+        c_udf_4,
+      </if>
+      <if test="cUdf5 != null">
+        c_udf_5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="cCarNum != null">
+        #{cCarNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cObjCode != null">
+        #{cObjCode,jdbcType=VARCHAR},
+      </if>
+      <if test="creatBy != null">
+        #{creatBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createByName != null">
+        #{createByName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cStatus != null">
+        #{cStatus,jdbcType=INTEGER},
+      </if>
+      <if test="cUdf1 != null">
+        #{cUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="cUdf2 != null">
+        #{cUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="cUdf3 != null">
+        #{cUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="cUdf4 != null">
+        #{cUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="cUdf5 != null">
+        #{cUdf5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bayee.model.CarControlInfo">
+    update car_control_info
+    <set>
+      <if test="cCarNum != null">
+        c_car_num = #{cCarNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cObjCode != null">
+        c_obj_code = #{cObjCode,jdbcType=VARCHAR},
+      </if>
+      <if test="creatBy != null">
+        creat_by = #{creatBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createByName != null">
+        create_by_name = #{createByName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cStatus != null">
+        c_status = #{cStatus,jdbcType=INTEGER},
+      </if>
+      <if test="cUdf1 != null">
+        c_udf_1 = #{cUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="cUdf2 != null">
+        c_udf_2 = #{cUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="cUdf3 != null">
+        c_udf_3 = #{cUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="cUdf4 != null">
+        c_udf_4 = #{cUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="cUdf5 != null">
+        c_udf_5 = #{cUdf5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bayee.model.CarControlInfo">
+    update car_control_info
+    set c_car_num = #{cCarNum,jdbcType=VARCHAR},
+      c_obj_code = #{cObjCode,jdbcType=VARCHAR},
+      creat_by = #{creatBy,jdbcType=VARCHAR},
+      create_by_name = #{createByName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      c_status = #{cStatus,jdbcType=INTEGER},
+      c_udf_1 = #{cUdf1,jdbcType=VARCHAR},
+      c_udf_2 = #{cUdf2,jdbcType=VARCHAR},
+      c_udf_3 = #{cUdf3,jdbcType=VARCHAR},
+      c_udf_4 = #{cUdf4,jdbcType=VARCHAR},
+      c_udf_5 = #{cUdf5,jdbcType=VARCHAR}
+    where c_id = #{cId,jdbcType=BIGINT}
+  </update>
+  
+  <update id="updateCarControlInfoByMap" parameterType="java.util.Map">
+    update car_control_info
+    <set>
+      <if test="map.cCarNum != null">
+        c_car_num = #{map.cCarNum,jdbcType=VARCHAR},
+      </if>
+      <if test="map.cObjCode != null">
+        c_obj_code = #{map.cObjCode,jdbcType=VARCHAR},
+      </if>
+      <if test="map.creatBy != null">
+        creat_by = #{map.creatBy,jdbcType=VARCHAR},
+      </if>
+      <if test="map.createByName != null">
+        create_by_name = #{map.createByName,jdbcType=VARCHAR},
+      </if>
+      <if test="map.createTime != null">
+        create_time = #{map.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="map.cStatus != null">
+        c_status = #{map.cStatus,jdbcType=INTEGER},
+      </if>
+      <if test="map.cUdf1 != null">
+        c_udf_1 = #{map.cUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="map.cUdf2 != null">
+        c_udf_2 = #{map.cUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="map.cUdf3 != null">
+        c_udf_3 = #{map.cUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="map.cUdf4 != null">
+        c_udf_4 = #{map.cUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="map.cUdf5 != null">
+        c_udf_5 = #{map.cUdf5,jdbcType=VARCHAR},
+      </if>
+      <if test="map.updateBy != null">
+        update_by = #{map.updateBy,jdbcType=VARCHAR},
+      </if>
+       <if test="map.updateByName != null">
+        update_by_name = #{map.updateByName,jdbcType=VARCHAR},
+      </if>
+       <if test="map.updateTime != null">
+        update_time = #{map.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+   <where>
+    	1=1
+     	<if test="map.whcObjCode != null">
+     		and c_obj_code = #{map.whcObjCode}
+      	</if>
+      	<if test="map.whcCarNum != null">
+     		and c_car_num = #{map.whcCarNum}
+      	</if>
+    </where>
+  </update>
+  
+   <select id="selectCarControlInfoByParamMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    	<include refid="Base_Column_List" />
+    from car_control_info
+    <where>
+ 		  c_status=0
+      	<if test="map.keyWord != null">
+      		and (create_by_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or c_car_num like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+      	<if test="map.cCarNum != null">
+      		and c_car_num =#{map.cCarNum,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.startDate!=null">
+             <![CDATA[ AND date_format(#{map.startDate},'%Y-%m-%d %H:%i:%s') <=  create_time]]>
+        </if>
+        <if test="map.endDate!=null">
+             <![CDATA[ AND date_format(#{map.endDate},'%Y-%m-%d %H:%i:%s') >= create_time]]>
+        </if>
+    </where>
+    <if test="map.start != null and map.pageSize != null">
+     limit #{map.start},#{map.pageSize}
+    </if>
+  </select>
+   <select id="selectCarControlCountByParamMap" parameterType="java.util.Map" resultType="java.lang.Integer">
+     select count(1) from car_control_info
+    <where>
+ 		  c_status=0
+      	<if test="map.keyWord != null">
+      		and (create_by_name like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%') 
+      			or c_car_num like concat('%',#{map.keyWord,jdbcType=VARCHAR},'%')
+      		)  
+      	</if>
+      	<if test="map.cCarNum != null">
+      		and c_car_num =#{map.cCarNum,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.startDate!=null">
+             <![CDATA[ AND date_format(#{map.startDate},'%Y-%m-%d %H:%i:%s') <=  create_time]]>
+        </if>
+        <if test="map.endDate!=null">
+             <![CDATA[ AND date_format(#{map.endDate},'%Y-%m-%d %H:%i:%s') >= create_time]]>
+        </if>
+    </where>
+  </select>
+</mapper>

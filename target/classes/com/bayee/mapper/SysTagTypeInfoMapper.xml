@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.SysTagTypeInfoMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.SysTagTypeInfo">
+    <id column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="type_status" jdbcType="INTEGER" property="typeStatus" />
+    <result column="type_udf_1" jdbcType="VARCHAR" property="typeUdf1" />
+    <result column="type_udf_2" jdbcType="VARCHAR" property="typeUdf2" />
+    <result column="type_udf_3" jdbcType="VARCHAR" property="typeUdf3" />
+    <result column="type_udf_4" jdbcType="VARCHAR" property="typeUdf4" />
+    <result column="type_udf_5" jdbcType="VARCHAR" property="typeUdf5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    type_id, type_name, type_status, type_udf_1, type_udf_2, type_udf_3, type_udf_4, 
+    type_udf_5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_tag_type_info
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_tag_type_info
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bayee.model.SysTagTypeInfo">
+    insert into sys_tag_type_info (type_id, type_name, type_status, 
+      type_udf_1, type_udf_2, type_udf_3, 
+      type_udf_4, type_udf_5)
+    values (#{typeId,jdbcType=INTEGER}, #{typeName,jdbcType=VARCHAR}, #{typeStatus,jdbcType=INTEGER}, 
+      #{typeUdf1,jdbcType=VARCHAR}, #{typeUdf2,jdbcType=VARCHAR}, #{typeUdf3,jdbcType=VARCHAR}, 
+      #{typeUdf4,jdbcType=VARCHAR}, #{typeUdf5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.SysTagTypeInfo">
+    insert into sys_tag_type_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="typeName != null">
+        type_name,
+      </if>
+      <if test="typeStatus != null">
+        type_status,
+      </if>
+      <if test="typeUdf1 != null">
+        type_udf_1,
+      </if>
+      <if test="typeUdf2 != null">
+        type_udf_2,
+      </if>
+      <if test="typeUdf3 != null">
+        type_udf_3,
+      </if>
+      <if test="typeUdf4 != null">
+        type_udf_4,
+      </if>
+      <if test="typeUdf5 != null">
+        type_udf_5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="typeName != null">
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeStatus != null">
+        #{typeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="typeUdf1 != null">
+        #{typeUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="typeUdf2 != null">
+        #{typeUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="typeUdf3 != null">
+        #{typeUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="typeUdf4 != null">
+        #{typeUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="typeUdf5 != null">
+        #{typeUdf5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bayee.model.SysTagTypeInfo">
+    update sys_tag_type_info
+    <set>
+      <if test="typeName != null">
+        type_name = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeStatus != null">
+        type_status = #{typeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="typeUdf1 != null">
+        type_udf_1 = #{typeUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="typeUdf2 != null">
+        type_udf_2 = #{typeUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="typeUdf3 != null">
+        type_udf_3 = #{typeUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="typeUdf4 != null">
+        type_udf_4 = #{typeUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="typeUdf5 != null">
+        type_udf_5 = #{typeUdf5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bayee.model.SysTagTypeInfo">
+    update sys_tag_type_info
+    set type_name = #{typeName,jdbcType=VARCHAR},
+      type_status = #{typeStatus,jdbcType=INTEGER},
+      type_udf_1 = #{typeUdf1,jdbcType=VARCHAR},
+      type_udf_2 = #{typeUdf2,jdbcType=VARCHAR},
+      type_udf_3 = #{typeUdf3,jdbcType=VARCHAR},
+      type_udf_4 = #{typeUdf4,jdbcType=VARCHAR},
+      type_udf_5 = #{typeUdf5,jdbcType=VARCHAR}
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectSysTagTypeInfoByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+     select 
+    <include refid="Base_Column_List" />
+    from sys_tag_type_info
+     <where>
+    	1=1
+     	<if test="map.typeStatus != null">
+     		and type_status = #{map.typeStatus}
+      	</if>
+      	<if test="map.typeName != null">
+      		and type_name like concat('%',#{map.typeName,jdbcType=VARCHAR},'%')  
+      	</if>
+    </where>
+  </select>
+</mapper>

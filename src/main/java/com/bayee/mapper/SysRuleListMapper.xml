@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.SysRuleListMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.SysRuleList">
+    <id column="list_id" jdbcType="INTEGER" property="listId" />
+    <result column="list_title" jdbcType="VARCHAR" property="listTitle" />
+    <result column="list_type_id" jdbcType="INTEGER" property="listTypeId" />
+    <result column="list_value_fir" jdbcType="VARCHAR" property="listValueFir" />
+    <result column="list_value_sec" jdbcType="VARCHAR" property="listValueSec" />
+    <result column="list_value_score" jdbcType="INTEGER" property="listValueScore" />
+    <result column="list_udf_1" jdbcType="VARCHAR" property="listUdf1" />
+    <result column="list_udf_2" jdbcType="VARCHAR" property="listUdf2" />
+    <result column="list_udf_3" jdbcType="VARCHAR" property="listUdf3" />
+    <result column="list_udf_4" jdbcType="VARCHAR" property="listUdf4" />
+    <result column="list_udf_5" jdbcType="VARCHAR" property="listUdf5" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    list_id, list_title, list_type_id, list_value_fir, list_value_sec, list_value_score, 
+    list_udf_1, list_udf_2, list_udf_3, list_udf_4, list_udf_5, create_by, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_rule_list
+    where list_id = #{listId,jdbcType=INTEGER}
+  </select>
+  <select id="selectSysRuleListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_rule_list
+    <where>
+    	1=1
+    	<if test="map.listStatus != null">
+       	 and list_status = #{map.listStatus,jdbcType=VARCHAR}
+      	</if>
+      	<if test="map.listTypeId != null">
+       	 and list_type_id = #{map.listTypeId,jdbcType=INTEGER}
+      	</if>
+      	<if test="map.listTypeIdArr != null">
+       	 and list_type_id in ${map.listTypeIdArr}
+      	</if>
+    </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_rule_list
+    where list_id = #{listId,jdbcType=INTEGER}
+  </delete>
+  
+  <delete id="deleteAllSysRuleList" parameterType="java.lang.Integer">
+    update  sys_rule_list set list_status='N'
+  </delete>
+  <insert id="insert" parameterType="com.bayee.model.SysRuleList">
+    insert into sys_rule_list (list_id, list_title, list_type_id, 
+      list_value_fir, list_value_sec, list_value_score, 
+      list_udf_1, list_udf_2, list_udf_3, 
+      list_udf_4, list_udf_5, create_by, 
+      create_time)
+    values (#{listId,jdbcType=INTEGER}, #{listTitle,jdbcType=VARCHAR}, #{listTypeId,jdbcType=INTEGER}, 
+      #{listValueFir,jdbcType=VARCHAR}, #{listValueSec,jdbcType=VARCHAR}, #{listValueScore,jdbcType=INTEGER}, 
+      #{listUdf1,jdbcType=VARCHAR}, #{listUdf2,jdbcType=VARCHAR}, #{listUdf3,jdbcType=VARCHAR}, 
+      #{listUdf4,jdbcType=VARCHAR}, #{listUdf5,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.SysRuleList">
+    insert into sys_rule_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="listId != null">
+        list_id,
+      </if>
+      <if test="listTitle != null">
+        list_title,
+      </if>
+      <if test="listTypeId != null">
+        list_type_id,
+      </if>
+      <if test="listValueFir != null">
+        list_value_fir,
+      </if>
+      <if test="listValueSec != null">
+        list_value_sec,
+      </if>
+      <if test="listValueScore != null">
+        list_value_score,
+      </if>
+      <if test="listUdf1 != null">
+        list_udf_1,
+      </if>
+      <if test="listUdf2 != null">
+        list_udf_2,
+      </if>
+      <if test="listUdf3 != null">
+        list_udf_3,
+      </if>
+      <if test="listUdf4 != null">
+        list_udf_4,
+      </if>
+      <if test="listUdf5 != null">
+        list_udf_5,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="listId != null">
+        #{listId,jdbcType=INTEGER},
+      </if>
+      <if test="listTitle != null">
+        #{listTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="listTypeId != null">
+        #{listTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="listValueFir != null">
+        #{listValueFir,jdbcType=VARCHAR},
+      </if>
+      <if test="listValueSec != null">
+        #{listValueSec,jdbcType=VARCHAR},
+      </if>
+      <if test="listValueScore != null">
+        #{listValueScore,jdbcType=INTEGER},
+      </if>
+      <if test="listUdf1 != null">
+        #{listUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="listUdf2 != null">
+        #{listUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="listUdf3 != null">
+        #{listUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="listUdf4 != null">
+        #{listUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="listUdf5 != null">
+        #{listUdf5,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bayee.model.SysRuleList">
+    update sys_rule_list
+    <set>
+      <if test="listTitle != null">
+        list_title = #{listTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="listTypeId != null">
+        list_type_id = #{listTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="listValueFir != null">
+        list_value_fir = #{listValueFir,jdbcType=VARCHAR},
+      </if>
+      <if test="listValueSec != null">
+        list_value_sec = #{listValueSec,jdbcType=VARCHAR},
+      </if>
+      <if test="listValueScore != null">
+        list_value_score = #{listValueScore,jdbcType=INTEGER},
+      </if>
+      <if test="listUdf1 != null">
+        list_udf_1 = #{listUdf1,jdbcType=VARCHAR},
+      </if>
+      <if test="listUdf2 != null">
+        list_udf_2 = #{listUdf2,jdbcType=VARCHAR},
+      </if>
+      <if test="listUdf3 != null">
+        list_udf_3 = #{listUdf3,jdbcType=VARCHAR},
+      </if>
+      <if test="listUdf4 != null">
+        list_udf_4 = #{listUdf4,jdbcType=VARCHAR},
+      </if>
+      <if test="listUdf5 != null">
+        list_udf_5 = #{listUdf5,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where list_id = #{listId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bayee.model.SysRuleList">
+    update sys_rule_list
+    set list_title = #{listTitle,jdbcType=VARCHAR},
+      list_type_id = #{listTypeId,jdbcType=INTEGER},
+      list_value_fir = #{listValueFir,jdbcType=VARCHAR},
+      list_value_sec = #{listValueSec,jdbcType=VARCHAR},
+      list_value_score = #{listValueScore,jdbcType=INTEGER},
+      list_udf_1 = #{listUdf1,jdbcType=VARCHAR},
+      list_udf_2 = #{listUdf2,jdbcType=VARCHAR},
+      list_udf_3 = #{listUdf3,jdbcType=VARCHAR},
+      list_udf_4 = #{listUdf4,jdbcType=VARCHAR},
+      list_udf_5 = #{listUdf5,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where list_id = #{listId,jdbcType=INTEGER}
+  </update>
+</mapper>

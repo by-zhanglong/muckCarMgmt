@@ -1,0 +1,985 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayee.dao.ProcessingEventMapper">
+  <resultMap id="BaseResultMap" type="com.bayee.model.ProcessingEvent">
+    <result column="event" jdbcType="VARCHAR" property="event" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="channel_id" jdbcType="VARCHAR" property="channelId" />
+    <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
+    <result column="channel_code" jdbcType="VARCHAR" property="channelCode" />
+    <result column="userChannel_code" jdbcType="VARCHAR" property="userchannelCode" />
+    <result column="record_Id" jdbcType="VARCHAR" property="recordId" />
+    <result column="source_Id" jdbcType="VARCHAR" property="sourceId" />
+    <result column="plate_Num" jdbcType="VARCHAR" property="plateNum" />
+    <result column="rec_Type" jdbcType="INTEGER" property="recType" />
+    <result column="rec_Code" jdbcType="VARCHAR" property="recCode" />
+    <result column="cap_Time" jdbcType="DOUBLE" property="capTime" />
+    <result column="traffic_Light_State" jdbcType="INTEGER" property="trafficLightState" />
+    <result column="red_Light_Date" jdbcType="DOUBLE" property="redLightDate" />
+    <result column="max_Speed" jdbcType="INTEGER" property="maxSpeed" />
+    <result column="min_Speed" jdbcType="INTEGER" property="minSpeed" />
+    <result column="plate_Color" jdbcType="VARCHAR" property="plateColor" />
+    <result column="plate_Type" jdbcType="VARCHAR" property="plateType" />
+    <result column="plate_Flag" jdbcType="VARCHAR" property="plateFlag" />
+    <result column="car_Type" jdbcType="VARCHAR" property="carType" />
+    <result column="car_Attribute" jdbcType="VARCHAR" property="carAttribute" />
+    <result column="car_Brand" jdbcType="VARCHAR" property="carBrand" />
+    <result column="car_Color" jdbcType="VARCHAR" property="carColor" />
+    <result column="car_Way_Code" jdbcType="INTEGER" property="carWayCode" />
+    <result column="car_Direct" jdbcType="VARCHAR" property="carDirect" />
+    <result column="car_Length" jdbcType="INTEGER" property="carLength" />
+    <result column="car_Width" jdbcType="INTEGER" property="carWidth" />
+    <result column="car_Height" jdbcType="INTEGER" property="carHeight" />
+    <result column="main_Seat_Belt" jdbcType="INTEGER" property="mainSeatBelt" />
+    <result column="slave_Seat_Belt" jdbcType="INTEGER" property="slaveSeatBelt" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="data_Source" jdbcType="INTEGER" property="dataSource" />
+    <result column="plate_No_Attach" jdbcType="VARCHAR" property="plateNoAttach" />
+    <result column="tollgate_Id" jdbcType="VARCHAR" property="tollgateId" />
+    <result column="mark_Time" jdbcType="INTEGER" property="markTime" />
+    <result column="appear_Time" jdbcType="INTEGER" property="appearTime" />
+    <result column="disappear_Time" jdbcType="INTEGER" property="disappearTime" />
+    <result column="is_Decked" jdbcType="INTEGER" property="isDecked" />
+    <result column="is_Corvered" jdbcType="INTEGER" property="isCorvered" />
+    <result column="is_Altered" jdbcType="INTEGER" property="isAltered" />
+    <result column="driving_Status_Code" jdbcType="VARCHAR" property="drivingStatusCode" />
+    <result column="using_Properties_Code" jdbcType="VARCHAR" property="usingPropertiesCode" />
+    <result column="wheel_Printed_Pattern" jdbcType="VARCHAR" property="wheelPrintedPattern" />
+    <result column="film_Color" jdbcType="INTEGER" property="filmColor" />
+    <result column="is_Modified" jdbcType="INTEGER" property="isModified" />
+    <result column="vehicle_Manufacturer" jdbcType="VARCHAR" property="vehicleManufacturer" />
+    <result column="vehicle_Mode" jdbcType="VARCHAR" property="vehicleMode" />
+    <result column="hit_MarkInfo" jdbcType="VARCHAR" property="hitMarkinfo" />
+    <result column="vehicle_Style" jdbcType="VARCHAR" property="vehicleStyle" />
+    <result column="vehicle_Color_Depth" jdbcType="VARCHAR" property="vehicleColorDepth" />
+    <result column="number_Of_Passenger" jdbcType="INTEGER" property="numberOfPassenger" />
+    <result column="name_Of_PassedRoad" jdbcType="VARCHAR" property="nameOfPassedroad" />
+    <result column="is_Suspicious" jdbcType="INTEGER" property="isSuspicious" />
+    <result column="sunvisor" jdbcType="INTEGER" property="sunvisor" />
+    <result column="safety_Belt" jdbcType="INTEGER" property="safetyBelt" />
+    <result column="calling" jdbcType="INTEGER" property="calling" />
+    <result column="brand_Reliability" jdbcType="INTEGER" property="brandReliability" />
+    <result column="is_Perfume_Front" jdbcType="INTEGER" property="isPerfumeFront" />
+    <result column="is_Detection_Sign_Front" jdbcType="INTEGER" property="isDetectionSignFront" />
+    <result column="is_Hangings_Front" jdbcType="INTEGER" property="isHangingsFront" />
+    <result column="is_SunVisor_Front" jdbcType="INTEGER" property="isSunvisorFront" />
+    <result column="is_Night_SunVisor_Front" jdbcType="INTEGER" property="isNightSunvisorFront" />
+    <result column="is_Other_Goods_Front" jdbcType="INTEGER" property="isOtherGoodsFront" />
+    <result column="is_Pillow_Rear" jdbcType="INTEGER" property="isPillowRear" />
+    <result column="is_Umbrella_Rear" jdbcType="INTEGER" property="isUmbrellaRear" />
+    <result column="is_Tissue_Rear" jdbcType="INTEGER" property="isTissueRear" />
+    <result column="is_CarSticker_Rear" jdbcType="INTEGER" property="isCarstickerRear" />
+    <result column="is_Identification_Rear" jdbcType="INTEGER" property="isIdentificationRear" />
+    <result column="is_Graffiti_Rear_Item" jdbcType="INTEGER" property="isGraffitiRearItem" />
+    <result column="is_Other_Goods_Rear" jdbcType="INTEGER" property="isOtherGoodsRear" />
+    <result column="has_Plate" jdbcType="INTEGER" property="hasPlate" />
+    <result column="has_Rack" jdbcType="INTEGER" property="hasRack" />
+    <result column="has_Sun_Roof" jdbcType="INTEGER" property="hasSunRoof" />
+    <result column="has_Sparetire" jdbcType="INTEGER" property="hasSparetire" />
+    <result column="is_Danger" jdbcType="INTEGER" property="isDanger" />
+    <result column="info_Kind" jdbcType="INTEGER" property="infoKind" />
+    <result column="pic_Record_Id" jdbcType="VARCHAR" property="picRecordId" />
+    <result column="car_Style" jdbcType="VARCHAR" property="carStyle" />
+    <result column="car_Style_Name" jdbcType="VARCHAR" property="carStyleName" />
+    <result column="plate_Num_A" jdbcType="VARCHAR" property="plateNumA" />
+    <result column="plate_Type_A" jdbcType="VARCHAR" property="plateTypeA" />
+    <result column="car_Type_A" jdbcType="VARCHAR" property="carTypeA" />
+    <result column="car_Color_A" jdbcType="VARCHAR" property="carColorA" />
+    <result column="plate_Color_A" jdbcType="VARCHAR" property="plateColorA" />
+    <result column="car_Reliability_A" jdbcType="INTEGER" property="carReliabilityA" />
+    <result column="paper_Cnt" jdbcType="INTEGER" property="paperCnt" />
+    <result column="sun_Cnt" jdbcType="INTEGER" property="sunCnt" />
+    <result column="drop_Cnt" jdbcType="INTEGER" property="dropCnt" />
+    <result column="tag_Cnt" jdbcType="INTEGER" property="tagCnt" />
+    <result column="car_Category_A" jdbcType="VARCHAR" property="carCategoryA" />
+    <result column="lapbelt_Cnt" jdbcType="INTEGER" property="lapbeltCnt" />
+    <result column="mobile_Cnt" jdbcType="INTEGER" property="mobileCnt" />
+    <result column="danger_Cnt" jdbcType="INTEGER" property="dangerCnt" />
+    <result column="smoke_Cnt" jdbcType="INTEGER" property="smokeCnt" />
+    <result column="error_Code" jdbcType="INTEGER" property="errorCode" />
+    <result column="crash_Cnt" jdbcType="INTEGER" property="crashCnt" />
+    <result column="lapbelt_Sup_Cnt" jdbcType="INTEGER" property="lapbeltSupCnt" />
+    <result column="lapbelt_Reliability" jdbcType="INTEGER" property="lapbeltReliability" />
+    <result column="lapbelt_SupReliability" jdbcType="INTEGER" property="lapbeltSupreliability" />
+    <result column="mobile_Reliability" jdbcType="INTEGER" property="mobileReliability" />
+    <result column="car_Color_Reliability" jdbcType="INTEGER" property="carColorReliability" />
+    <result column="crash_Reliability" jdbcType="INTEGER" property="crashReliability" />
+    <result column="plate_Reliability" jdbcType="INTEGER" property="plateReliability" />
+    <result column="danger_Reliability" jdbcType="INTEGER" property="dangerReliability" />
+    <result column="car_Type_Reliability" jdbcType="INTEGER" property="carTypeReliability" />
+    <result column="car_Speed" jdbcType="INTEGER" property="carSpeed" />
+    <result column="sunroof_Cnt" jdbcType="INTEGER" property="sunroofCnt" />
+    <result column="sparetire_Cnt" jdbcType="INTEGER" property="sparetireCnt" />
+    <result column="rack_Cnt" jdbcType="INTEGER" property="rackCnt" />
+    <result column="shape" jdbcType="INTEGER" property="shape" />
+    <result column="baby_Cnt" jdbcType="INTEGER" property="babyCnt" />
+    <result column="is_Skylight_Person" jdbcType="INTEGER" property="isSkylightPerson" />
+    <result column="musk_Hide" jdbcType="INTEGER" property="muskHide" />
+    <result column="trunk_Status" jdbcType="INTEGER" property="trunkStatus" />
+    <result column="car_Print" jdbcType="INTEGER" property="carPrint" />
+    <result column="is_Yellow_Label" jdbcType="INTEGER" property="isYellowLabel" />
+    <result column="card_Cnt" jdbcType="INTEGER" property="cardCnt" />
+    <result column="glass_Cnt" jdbcType="INTEGER" property="glassCnt" />
+    <result column="mask_Cnt" jdbcType="INTEGER" property="maskCnt" />
+    <result column="is_Stained_Plate" jdbcType="INTEGER" property="isStainedPlate" />
+    <result column="storage_Flag" jdbcType="INTEGER" property="storageFlag" />
+    <result column="snap_Headstock" jdbcType="INTEGER" property="snapHeadstock" />
+    <result column="extracted_Flag" jdbcType="INTEGER" property="extractedFlag" />
+    <result column="vendor" jdbcType="VARCHAR" property="vendor" />
+    <result column="algorithm_Version" jdbcType="VARCHAR" property="algorithmVersion" />
+    <result column="feature_Data" jdbcType="VARCHAR" property="featureData" />
+  </resultMap>
+  <insert id="insert" parameterType="com.bayee.model.ProcessingEvent">
+    insert into processing_event (event, uid, channel_id, 
+      device_id, channel_code, userChannel_code, 
+      record_Id, source_Id, plate_Num, 
+      rec_Type, rec_Code, cap_Time, 
+      traffic_Light_State, red_Light_Date, max_Speed, 
+      min_Speed, plate_Color, plate_Type, 
+      plate_Flag, car_Type, car_Attribute, 
+      car_Brand, car_Color, car_Way_Code, 
+      car_Direct, car_Length, car_Width, 
+      car_Height, main_Seat_Belt, slave_Seat_Belt, 
+      country, data_Source, plate_No_Attach, 
+      tollgate_Id, mark_Time, appear_Time, 
+      disappear_Time, is_Decked, is_Corvered, 
+      is_Altered, driving_Status_Code, using_Properties_Code, 
+      wheel_Printed_Pattern, film_Color, is_Modified, 
+      vehicle_Manufacturer, vehicle_Mode, hit_MarkInfo, 
+      vehicle_Style, vehicle_Color_Depth, number_Of_Passenger, 
+      name_Of_PassedRoad, is_Suspicious, sunvisor, 
+      safety_Belt, calling, brand_Reliability, 
+      is_Perfume_Front, is_Detection_Sign_Front, is_Hangings_Front, 
+      is_SunVisor_Front, is_Night_SunVisor_Front, 
+      is_Other_Goods_Front, is_Pillow_Rear, is_Umbrella_Rear, 
+      is_Tissue_Rear, is_CarSticker_Rear, is_Identification_Rear, 
+      is_Graffiti_Rear_Item, is_Other_Goods_Rear, has_Plate, 
+      has_Rack, has_Sun_Roof, has_Sparetire, 
+      is_Danger, info_Kind, pic_Record_Id, 
+      car_Style, car_Style_Name, plate_Num_A, 
+      plate_Type_A, car_Type_A, car_Color_A, 
+      plate_Color_A, car_Reliability_A, paper_Cnt, 
+      sun_Cnt, drop_Cnt, tag_Cnt, 
+      car_Category_A, lapbelt_Cnt, mobile_Cnt, 
+      danger_Cnt, smoke_Cnt, error_Code, 
+      crash_Cnt, lapbelt_Sup_Cnt, lapbelt_Reliability, 
+      lapbelt_SupReliability, mobile_Reliability, 
+      car_Color_Reliability, crash_Reliability, 
+      plate_Reliability, danger_Reliability, car_Type_Reliability, 
+      car_Speed, sunroof_Cnt, sparetire_Cnt, 
+      rack_Cnt, shape, baby_Cnt, 
+      is_Skylight_Person, musk_Hide, trunk_Status, 
+      car_Print, is_Yellow_Label, card_Cnt, 
+      glass_Cnt, mask_Cnt, is_Stained_Plate, 
+      storage_Flag, snap_Headstock, extracted_Flag, 
+      vendor, algorithm_Version, feature_Data
+      )
+    values (#{event,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{channelId,jdbcType=VARCHAR}, 
+      #{deviceId,jdbcType=VARCHAR}, #{channelCode,jdbcType=VARCHAR}, #{userchannelCode,jdbcType=VARCHAR}, 
+      #{recordId,jdbcType=VARCHAR}, #{sourceId,jdbcType=VARCHAR}, #{plateNum,jdbcType=VARCHAR}, 
+      #{recType,jdbcType=INTEGER}, #{recCode,jdbcType=VARCHAR}, #{capTime,jdbcType=DOUBLE}, 
+      #{trafficLightState,jdbcType=INTEGER}, #{redLightDate,jdbcType=DOUBLE}, #{maxSpeed,jdbcType=INTEGER}, 
+      #{minSpeed,jdbcType=INTEGER}, #{plateColor,jdbcType=VARCHAR}, #{plateType,jdbcType=VARCHAR}, 
+      #{plateFlag,jdbcType=VARCHAR}, #{carType,jdbcType=VARCHAR}, #{carAttribute,jdbcType=VARCHAR}, 
+      #{carBrand,jdbcType=VARCHAR}, #{carColor,jdbcType=VARCHAR}, #{carWayCode,jdbcType=INTEGER}, 
+      #{carDirect,jdbcType=VARCHAR}, #{carLength,jdbcType=INTEGER}, #{carWidth,jdbcType=INTEGER}, 
+      #{carHeight,jdbcType=INTEGER}, #{mainSeatBelt,jdbcType=INTEGER}, #{slaveSeatBelt,jdbcType=INTEGER}, 
+      #{country,jdbcType=VARCHAR}, #{dataSource,jdbcType=INTEGER}, #{plateNoAttach,jdbcType=VARCHAR}, 
+      #{tollgateId,jdbcType=VARCHAR}, #{markTime,jdbcType=INTEGER}, #{appearTime,jdbcType=INTEGER}, 
+      #{disappearTime,jdbcType=INTEGER}, #{isDecked,jdbcType=INTEGER}, #{isCorvered,jdbcType=INTEGER}, 
+      #{isAltered,jdbcType=INTEGER}, #{drivingStatusCode,jdbcType=VARCHAR}, #{usingPropertiesCode,jdbcType=VARCHAR}, 
+      #{wheelPrintedPattern,jdbcType=VARCHAR}, #{filmColor,jdbcType=INTEGER}, #{isModified,jdbcType=INTEGER}, 
+      #{vehicleManufacturer,jdbcType=VARCHAR}, #{vehicleMode,jdbcType=VARCHAR}, #{hitMarkinfo,jdbcType=VARCHAR}, 
+      #{vehicleStyle,jdbcType=VARCHAR}, #{vehicleColorDepth,jdbcType=VARCHAR}, #{numberOfPassenger,jdbcType=INTEGER}, 
+      #{nameOfPassedroad,jdbcType=VARCHAR}, #{isSuspicious,jdbcType=INTEGER}, #{sunvisor,jdbcType=INTEGER}, 
+      #{safetyBelt,jdbcType=INTEGER}, #{calling,jdbcType=INTEGER}, #{brandReliability,jdbcType=INTEGER}, 
+      #{isPerfumeFront,jdbcType=INTEGER}, #{isDetectionSignFront,jdbcType=INTEGER}, #{isHangingsFront,jdbcType=INTEGER}, 
+      #{isSunvisorFront,jdbcType=INTEGER}, #{isNightSunvisorFront,jdbcType=INTEGER}, 
+      #{isOtherGoodsFront,jdbcType=INTEGER}, #{isPillowRear,jdbcType=INTEGER}, #{isUmbrellaRear,jdbcType=INTEGER}, 
+      #{isTissueRear,jdbcType=INTEGER}, #{isCarstickerRear,jdbcType=INTEGER}, #{isIdentificationRear,jdbcType=INTEGER}, 
+      #{isGraffitiRearItem,jdbcType=INTEGER}, #{isOtherGoodsRear,jdbcType=INTEGER}, #{hasPlate,jdbcType=INTEGER}, 
+      #{hasRack,jdbcType=INTEGER}, #{hasSunRoof,jdbcType=INTEGER}, #{hasSparetire,jdbcType=INTEGER}, 
+      #{isDanger,jdbcType=INTEGER}, #{infoKind,jdbcType=INTEGER}, #{picRecordId,jdbcType=VARCHAR}, 
+      #{carStyle,jdbcType=VARCHAR}, #{carStyleName,jdbcType=VARCHAR}, #{plateNumA,jdbcType=VARCHAR}, 
+      #{plateTypeA,jdbcType=VARCHAR}, #{carTypeA,jdbcType=VARCHAR}, #{carColorA,jdbcType=VARCHAR}, 
+      #{plateColorA,jdbcType=VARCHAR}, #{carReliabilityA,jdbcType=INTEGER}, #{paperCnt,jdbcType=INTEGER}, 
+      #{sunCnt,jdbcType=INTEGER}, #{dropCnt,jdbcType=INTEGER}, #{tagCnt,jdbcType=INTEGER}, 
+      #{carCategoryA,jdbcType=VARCHAR}, #{lapbeltCnt,jdbcType=INTEGER}, #{mobileCnt,jdbcType=INTEGER}, 
+      #{dangerCnt,jdbcType=INTEGER}, #{smokeCnt,jdbcType=INTEGER}, #{errorCode,jdbcType=INTEGER}, 
+      #{crashCnt,jdbcType=INTEGER}, #{lapbeltSupCnt,jdbcType=INTEGER}, #{lapbeltReliability,jdbcType=INTEGER}, 
+      #{lapbeltSupreliability,jdbcType=INTEGER}, #{mobileReliability,jdbcType=INTEGER}, 
+      #{carColorReliability,jdbcType=INTEGER}, #{crashReliability,jdbcType=INTEGER}, 
+      #{plateReliability,jdbcType=INTEGER}, #{dangerReliability,jdbcType=INTEGER}, #{carTypeReliability,jdbcType=INTEGER}, 
+      #{carSpeed,jdbcType=INTEGER}, #{sunroofCnt,jdbcType=INTEGER}, #{sparetireCnt,jdbcType=INTEGER}, 
+      #{rackCnt,jdbcType=INTEGER}, #{shape,jdbcType=INTEGER}, #{babyCnt,jdbcType=INTEGER}, 
+      #{isSkylightPerson,jdbcType=INTEGER}, #{muskHide,jdbcType=INTEGER}, #{trunkStatus,jdbcType=INTEGER}, 
+      #{carPrint,jdbcType=INTEGER}, #{isYellowLabel,jdbcType=INTEGER}, #{cardCnt,jdbcType=INTEGER}, 
+      #{glassCnt,jdbcType=INTEGER}, #{maskCnt,jdbcType=INTEGER}, #{isStainedPlate,jdbcType=INTEGER}, 
+      #{storageFlag,jdbcType=INTEGER}, #{snapHeadstock,jdbcType=INTEGER}, #{extractedFlag,jdbcType=INTEGER}, 
+      #{vendor,jdbcType=VARCHAR}, #{algorithmVersion,jdbcType=VARCHAR}, #{featureData,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bayee.model.ProcessingEvent">
+    insert into processing_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="event != null">
+        event,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="deviceId != null">
+        device_id,
+      </if>
+      <if test="channelCode != null">
+        channel_code,
+      </if>
+      <if test="userchannelCode != null">
+        userChannel_code,
+      </if>
+      <if test="recordId != null">
+        record_Id,
+      </if>
+      <if test="sourceId != null">
+        source_Id,
+      </if>
+      <if test="plateNum != null">
+        plate_Num,
+      </if>
+      <if test="recType != null">
+        rec_Type,
+      </if>
+      <if test="recCode != null">
+        rec_Code,
+      </if>
+      <if test="capTime != null">
+        cap_Time,
+      </if>
+      <if test="trafficLightState != null">
+        traffic_Light_State,
+      </if>
+      <if test="redLightDate != null">
+        red_Light_Date,
+      </if>
+      <if test="maxSpeed != null">
+        max_Speed,
+      </if>
+      <if test="minSpeed != null">
+        min_Speed,
+      </if>
+      <if test="plateColor != null">
+        plate_Color,
+      </if>
+      <if test="plateType != null">
+        plate_Type,
+      </if>
+      <if test="plateFlag != null">
+        plate_Flag,
+      </if>
+      <if test="carType != null">
+        car_Type,
+      </if>
+      <if test="carAttribute != null">
+        car_Attribute,
+      </if>
+      <if test="carBrand != null">
+        car_Brand,
+      </if>
+      <if test="carColor != null">
+        car_Color,
+      </if>
+      <if test="carWayCode != null">
+        car_Way_Code,
+      </if>
+      <if test="carDirect != null">
+        car_Direct,
+      </if>
+      <if test="carLength != null">
+        car_Length,
+      </if>
+      <if test="carWidth != null">
+        car_Width,
+      </if>
+      <if test="carHeight != null">
+        car_Height,
+      </if>
+      <if test="mainSeatBelt != null">
+        main_Seat_Belt,
+      </if>
+      <if test="slaveSeatBelt != null">
+        slave_Seat_Belt,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="dataSource != null">
+        data_Source,
+      </if>
+      <if test="plateNoAttach != null">
+        plate_No_Attach,
+      </if>
+      <if test="tollgateId != null">
+        tollgate_Id,
+      </if>
+      <if test="markTime != null">
+        mark_Time,
+      </if>
+      <if test="appearTime != null">
+        appear_Time,
+      </if>
+      <if test="disappearTime != null">
+        disappear_Time,
+      </if>
+      <if test="isDecked != null">
+        is_Decked,
+      </if>
+      <if test="isCorvered != null">
+        is_Corvered,
+      </if>
+      <if test="isAltered != null">
+        is_Altered,
+      </if>
+      <if test="drivingStatusCode != null">
+        driving_Status_Code,
+      </if>
+      <if test="usingPropertiesCode != null">
+        using_Properties_Code,
+      </if>
+      <if test="wheelPrintedPattern != null">
+        wheel_Printed_Pattern,
+      </if>
+      <if test="filmColor != null">
+        film_Color,
+      </if>
+      <if test="isModified != null">
+        is_Modified,
+      </if>
+      <if test="vehicleManufacturer != null">
+        vehicle_Manufacturer,
+      </if>
+      <if test="vehicleMode != null">
+        vehicle_Mode,
+      </if>
+      <if test="hitMarkinfo != null">
+        hit_MarkInfo,
+      </if>
+      <if test="vehicleStyle != null">
+        vehicle_Style,
+      </if>
+      <if test="vehicleColorDepth != null">
+        vehicle_Color_Depth,
+      </if>
+      <if test="numberOfPassenger != null">
+        number_Of_Passenger,
+      </if>
+      <if test="nameOfPassedroad != null">
+        name_Of_PassedRoad,
+      </if>
+      <if test="isSuspicious != null">
+        is_Suspicious,
+      </if>
+      <if test="sunvisor != null">
+        sunvisor,
+      </if>
+      <if test="safetyBelt != null">
+        safety_Belt,
+      </if>
+      <if test="calling != null">
+        calling,
+      </if>
+      <if test="brandReliability != null">
+        brand_Reliability,
+      </if>
+      <if test="isPerfumeFront != null">
+        is_Perfume_Front,
+      </if>
+      <if test="isDetectionSignFront != null">
+        is_Detection_Sign_Front,
+      </if>
+      <if test="isHangingsFront != null">
+        is_Hangings_Front,
+      </if>
+      <if test="isSunvisorFront != null">
+        is_SunVisor_Front,
+      </if>
+      <if test="isNightSunvisorFront != null">
+        is_Night_SunVisor_Front,
+      </if>
+      <if test="isOtherGoodsFront != null">
+        is_Other_Goods_Front,
+      </if>
+      <if test="isPillowRear != null">
+        is_Pillow_Rear,
+      </if>
+      <if test="isUmbrellaRear != null">
+        is_Umbrella_Rear,
+      </if>
+      <if test="isTissueRear != null">
+        is_Tissue_Rear,
+      </if>
+      <if test="isCarstickerRear != null">
+        is_CarSticker_Rear,
+      </if>
+      <if test="isIdentificationRear != null">
+        is_Identification_Rear,
+      </if>
+      <if test="isGraffitiRearItem != null">
+        is_Graffiti_Rear_Item,
+      </if>
+      <if test="isOtherGoodsRear != null">
+        is_Other_Goods_Rear,
+      </if>
+      <if test="hasPlate != null">
+        has_Plate,
+      </if>
+      <if test="hasRack != null">
+        has_Rack,
+      </if>
+      <if test="hasSunRoof != null">
+        has_Sun_Roof,
+      </if>
+      <if test="hasSparetire != null">
+        has_Sparetire,
+      </if>
+      <if test="isDanger != null">
+        is_Danger,
+      </if>
+      <if test="infoKind != null">
+        info_Kind,
+      </if>
+      <if test="picRecordId != null">
+        pic_Record_Id,
+      </if>
+      <if test="carStyle != null">
+        car_Style,
+      </if>
+      <if test="carStyleName != null">
+        car_Style_Name,
+      </if>
+      <if test="plateNumA != null">
+        plate_Num_A,
+      </if>
+      <if test="plateTypeA != null">
+        plate_Type_A,
+      </if>
+      <if test="carTypeA != null">
+        car_Type_A,
+      </if>
+      <if test="carColorA != null">
+        car_Color_A,
+      </if>
+      <if test="plateColorA != null">
+        plate_Color_A,
+      </if>
+      <if test="carReliabilityA != null">
+        car_Reliability_A,
+      </if>
+      <if test="paperCnt != null">
+        paper_Cnt,
+      </if>
+      <if test="sunCnt != null">
+        sun_Cnt,
+      </if>
+      <if test="dropCnt != null">
+        drop_Cnt,
+      </if>
+      <if test="tagCnt != null">
+        tag_Cnt,
+      </if>
+      <if test="carCategoryA != null">
+        car_Category_A,
+      </if>
+      <if test="lapbeltCnt != null">
+        lapbelt_Cnt,
+      </if>
+      <if test="mobileCnt != null">
+        mobile_Cnt,
+      </if>
+      <if test="dangerCnt != null">
+        danger_Cnt,
+      </if>
+      <if test="smokeCnt != null">
+        smoke_Cnt,
+      </if>
+      <if test="errorCode != null">
+        error_Code,
+      </if>
+      <if test="crashCnt != null">
+        crash_Cnt,
+      </if>
+      <if test="lapbeltSupCnt != null">
+        lapbelt_Sup_Cnt,
+      </if>
+      <if test="lapbeltReliability != null">
+        lapbelt_Reliability,
+      </if>
+      <if test="lapbeltSupreliability != null">
+        lapbelt_SupReliability,
+      </if>
+      <if test="mobileReliability != null">
+        mobile_Reliability,
+      </if>
+      <if test="carColorReliability != null">
+        car_Color_Reliability,
+      </if>
+      <if test="crashReliability != null">
+        crash_Reliability,
+      </if>
+      <if test="plateReliability != null">
+        plate_Reliability,
+      </if>
+      <if test="dangerReliability != null">
+        danger_Reliability,
+      </if>
+      <if test="carTypeReliability != null">
+        car_Type_Reliability,
+      </if>
+      <if test="carSpeed != null">
+        car_Speed,
+      </if>
+      <if test="sunroofCnt != null">
+        sunroof_Cnt,
+      </if>
+      <if test="sparetireCnt != null">
+        sparetire_Cnt,
+      </if>
+      <if test="rackCnt != null">
+        rack_Cnt,
+      </if>
+      <if test="shape != null">
+        shape,
+      </if>
+      <if test="babyCnt != null">
+        baby_Cnt,
+      </if>
+      <if test="isSkylightPerson != null">
+        is_Skylight_Person,
+      </if>
+      <if test="muskHide != null">
+        musk_Hide,
+      </if>
+      <if test="trunkStatus != null">
+        trunk_Status,
+      </if>
+      <if test="carPrint != null">
+        car_Print,
+      </if>
+      <if test="isYellowLabel != null">
+        is_Yellow_Label,
+      </if>
+      <if test="cardCnt != null">
+        card_Cnt,
+      </if>
+      <if test="glassCnt != null">
+        glass_Cnt,
+      </if>
+      <if test="maskCnt != null">
+        mask_Cnt,
+      </if>
+      <if test="isStainedPlate != null">
+        is_Stained_Plate,
+      </if>
+      <if test="storageFlag != null">
+        storage_Flag,
+      </if>
+      <if test="snapHeadstock != null">
+        snap_Headstock,
+      </if>
+      <if test="extractedFlag != null">
+        extracted_Flag,
+      </if>
+      <if test="vendor != null">
+        vendor,
+      </if>
+      <if test="algorithmVersion != null">
+        algorithm_Version,
+      </if>
+      <if test="featureData != null">
+        feature_Data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="event != null">
+        #{event,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelCode != null">
+        #{channelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userchannelCode != null">
+        #{userchannelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="recordId != null">
+        #{recordId,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceId != null">
+        #{sourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="plateNum != null">
+        #{plateNum,jdbcType=VARCHAR},
+      </if>
+      <if test="recType != null">
+        #{recType,jdbcType=INTEGER},
+      </if>
+      <if test="recCode != null">
+        #{recCode,jdbcType=VARCHAR},
+      </if>
+      <if test="capTime != null">
+        #{capTime,jdbcType=DOUBLE},
+      </if>
+      <if test="trafficLightState != null">
+        #{trafficLightState,jdbcType=INTEGER},
+      </if>
+      <if test="redLightDate != null">
+        #{redLightDate,jdbcType=DOUBLE},
+      </if>
+      <if test="maxSpeed != null">
+        #{maxSpeed,jdbcType=INTEGER},
+      </if>
+      <if test="minSpeed != null">
+        #{minSpeed,jdbcType=INTEGER},
+      </if>
+      <if test="plateColor != null">
+        #{plateColor,jdbcType=VARCHAR},
+      </if>
+      <if test="plateType != null">
+        #{plateType,jdbcType=VARCHAR},
+      </if>
+      <if test="plateFlag != null">
+        #{plateFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="carType != null">
+        #{carType,jdbcType=VARCHAR},
+      </if>
+      <if test="carAttribute != null">
+        #{carAttribute,jdbcType=VARCHAR},
+      </if>
+      <if test="carBrand != null">
+        #{carBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="carColor != null">
+        #{carColor,jdbcType=VARCHAR},
+      </if>
+      <if test="carWayCode != null">
+        #{carWayCode,jdbcType=INTEGER},
+      </if>
+      <if test="carDirect != null">
+        #{carDirect,jdbcType=VARCHAR},
+      </if>
+      <if test="carLength != null">
+        #{carLength,jdbcType=INTEGER},
+      </if>
+      <if test="carWidth != null">
+        #{carWidth,jdbcType=INTEGER},
+      </if>
+      <if test="carHeight != null">
+        #{carHeight,jdbcType=INTEGER},
+      </if>
+      <if test="mainSeatBelt != null">
+        #{mainSeatBelt,jdbcType=INTEGER},
+      </if>
+      <if test="slaveSeatBelt != null">
+        #{slaveSeatBelt,jdbcType=INTEGER},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="dataSource != null">
+        #{dataSource,jdbcType=INTEGER},
+      </if>
+      <if test="plateNoAttach != null">
+        #{plateNoAttach,jdbcType=VARCHAR},
+      </if>
+      <if test="tollgateId != null">
+        #{tollgateId,jdbcType=VARCHAR},
+      </if>
+      <if test="markTime != null">
+        #{markTime,jdbcType=INTEGER},
+      </if>
+      <if test="appearTime != null">
+        #{appearTime,jdbcType=INTEGER},
+      </if>
+      <if test="disappearTime != null">
+        #{disappearTime,jdbcType=INTEGER},
+      </if>
+      <if test="isDecked != null">
+        #{isDecked,jdbcType=INTEGER},
+      </if>
+      <if test="isCorvered != null">
+        #{isCorvered,jdbcType=INTEGER},
+      </if>
+      <if test="isAltered != null">
+        #{isAltered,jdbcType=INTEGER},
+      </if>
+      <if test="drivingStatusCode != null">
+        #{drivingStatusCode,jdbcType=VARCHAR},
+      </if>
+      <if test="usingPropertiesCode != null">
+        #{usingPropertiesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="wheelPrintedPattern != null">
+        #{wheelPrintedPattern,jdbcType=VARCHAR},
+      </if>
+      <if test="filmColor != null">
+        #{filmColor,jdbcType=INTEGER},
+      </if>
+      <if test="isModified != null">
+        #{isModified,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleManufacturer != null">
+        #{vehicleManufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleMode != null">
+        #{vehicleMode,jdbcType=VARCHAR},
+      </if>
+      <if test="hitMarkinfo != null">
+        #{hitMarkinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleStyle != null">
+        #{vehicleStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleColorDepth != null">
+        #{vehicleColorDepth,jdbcType=VARCHAR},
+      </if>
+      <if test="numberOfPassenger != null">
+        #{numberOfPassenger,jdbcType=INTEGER},
+      </if>
+      <if test="nameOfPassedroad != null">
+        #{nameOfPassedroad,jdbcType=VARCHAR},
+      </if>
+      <if test="isSuspicious != null">
+        #{isSuspicious,jdbcType=INTEGER},
+      </if>
+      <if test="sunvisor != null">
+        #{sunvisor,jdbcType=INTEGER},
+      </if>
+      <if test="safetyBelt != null">
+        #{safetyBelt,jdbcType=INTEGER},
+      </if>
+      <if test="calling != null">
+        #{calling,jdbcType=INTEGER},
+      </if>
+      <if test="brandReliability != null">
+        #{brandReliability,jdbcType=INTEGER},
+      </if>
+      <if test="isPerfumeFront != null">
+        #{isPerfumeFront,jdbcType=INTEGER},
+      </if>
+      <if test="isDetectionSignFront != null">
+        #{isDetectionSignFront,jdbcType=INTEGER},
+      </if>
+      <if test="isHangingsFront != null">
+        #{isHangingsFront,jdbcType=INTEGER},
+      </if>
+      <if test="isSunvisorFront != null">
+        #{isSunvisorFront,jdbcType=INTEGER},
+      </if>
+      <if test="isNightSunvisorFront != null">
+        #{isNightSunvisorFront,jdbcType=INTEGER},
+      </if>
+      <if test="isOtherGoodsFront != null">
+        #{isOtherGoodsFront,jdbcType=INTEGER},
+      </if>
+      <if test="isPillowRear != null">
+        #{isPillowRear,jdbcType=INTEGER},
+      </if>
+      <if test="isUmbrellaRear != null">
+        #{isUmbrellaRear,jdbcType=INTEGER},
+      </if>
+      <if test="isTissueRear != null">
+        #{isTissueRear,jdbcType=INTEGER},
+      </if>
+      <if test="isCarstickerRear != null">
+        #{isCarstickerRear,jdbcType=INTEGER},
+      </if>
+      <if test="isIdentificationRear != null">
+        #{isIdentificationRear,jdbcType=INTEGER},
+      </if>
+      <if test="isGraffitiRearItem != null">
+        #{isGraffitiRearItem,jdbcType=INTEGER},
+      </if>
+      <if test="isOtherGoodsRear != null">
+        #{isOtherGoodsRear,jdbcType=INTEGER},
+      </if>
+      <if test="hasPlate != null">
+        #{hasPlate,jdbcType=INTEGER},
+      </if>
+      <if test="hasRack != null">
+        #{hasRack,jdbcType=INTEGER},
+      </if>
+      <if test="hasSunRoof != null">
+        #{hasSunRoof,jdbcType=INTEGER},
+      </if>
+      <if test="hasSparetire != null">
+        #{hasSparetire,jdbcType=INTEGER},
+      </if>
+      <if test="isDanger != null">
+        #{isDanger,jdbcType=INTEGER},
+      </if>
+      <if test="infoKind != null">
+        #{infoKind,jdbcType=INTEGER},
+      </if>
+      <if test="picRecordId != null">
+        #{picRecordId,jdbcType=VARCHAR},
+      </if>
+      <if test="carStyle != null">
+        #{carStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="carStyleName != null">
+        #{carStyleName,jdbcType=VARCHAR},
+      </if>
+      <if test="plateNumA != null">
+        #{plateNumA,jdbcType=VARCHAR},
+      </if>
+      <if test="plateTypeA != null">
+        #{plateTypeA,jdbcType=VARCHAR},
+      </if>
+      <if test="carTypeA != null">
+        #{carTypeA,jdbcType=VARCHAR},
+      </if>
+      <if test="carColorA != null">
+        #{carColorA,jdbcType=VARCHAR},
+      </if>
+      <if test="plateColorA != null">
+        #{plateColorA,jdbcType=VARCHAR},
+      </if>
+      <if test="carReliabilityA != null">
+        #{carReliabilityA,jdbcType=INTEGER},
+      </if>
+      <if test="paperCnt != null">
+        #{paperCnt,jdbcType=INTEGER},
+      </if>
+      <if test="sunCnt != null">
+        #{sunCnt,jdbcType=INTEGER},
+      </if>
+      <if test="dropCnt != null">
+        #{dropCnt,jdbcType=INTEGER},
+      </if>
+      <if test="tagCnt != null">
+        #{tagCnt,jdbcType=INTEGER},
+      </if>
+      <if test="carCategoryA != null">
+        #{carCategoryA,jdbcType=VARCHAR},
+      </if>
+      <if test="lapbeltCnt != null">
+        #{lapbeltCnt,jdbcType=INTEGER},
+      </if>
+      <if test="mobileCnt != null">
+        #{mobileCnt,jdbcType=INTEGER},
+      </if>
+      <if test="dangerCnt != null">
+        #{dangerCnt,jdbcType=INTEGER},
+      </if>
+      <if test="smokeCnt != null">
+        #{smokeCnt,jdbcType=INTEGER},
+      </if>
+      <if test="errorCode != null">
+        #{errorCode,jdbcType=INTEGER},
+      </if>
+      <if test="crashCnt != null">
+        #{crashCnt,jdbcType=INTEGER},
+      </if>
+      <if test="lapbeltSupCnt != null">
+        #{lapbeltSupCnt,jdbcType=INTEGER},
+      </if>
+      <if test="lapbeltReliability != null">
+        #{lapbeltReliability,jdbcType=INTEGER},
+      </if>
+      <if test="lapbeltSupreliability != null">
+        #{lapbeltSupreliability,jdbcType=INTEGER},
+      </if>
+      <if test="mobileReliability != null">
+        #{mobileReliability,jdbcType=INTEGER},
+      </if>
+      <if test="carColorReliability != null">
+        #{carColorReliability,jdbcType=INTEGER},
+      </if>
+      <if test="crashReliability != null">
+        #{crashReliability,jdbcType=INTEGER},
+      </if>
+      <if test="plateReliability != null">
+        #{plateReliability,jdbcType=INTEGER},
+      </if>
+      <if test="dangerReliability != null">
+        #{dangerReliability,jdbcType=INTEGER},
+      </if>
+      <if test="carTypeReliability != null">
+        #{carTypeReliability,jdbcType=INTEGER},
+      </if>
+      <if test="carSpeed != null">
+        #{carSpeed,jdbcType=INTEGER},
+      </if>
+      <if test="sunroofCnt != null">
+        #{sunroofCnt,jdbcType=INTEGER},
+      </if>
+      <if test="sparetireCnt != null">
+        #{sparetireCnt,jdbcType=INTEGER},
+      </if>
+      <if test="rackCnt != null">
+        #{rackCnt,jdbcType=INTEGER},
+      </if>
+      <if test="shape != null">
+        #{shape,jdbcType=INTEGER},
+      </if>
+      <if test="babyCnt != null">
+        #{babyCnt,jdbcType=INTEGER},
+      </if>
+      <if test="isSkylightPerson != null">
+        #{isSkylightPerson,jdbcType=INTEGER},
+      </if>
+      <if test="muskHide != null">
+        #{muskHide,jdbcType=INTEGER},
+      </if>
+      <if test="trunkStatus != null">
+        #{trunkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="carPrint != null">
+        #{carPrint,jdbcType=INTEGER},
+      </if>
+      <if test="isYellowLabel != null">
+        #{isYellowLabel,jdbcType=INTEGER},
+      </if>
+      <if test="cardCnt != null">
+        #{cardCnt,jdbcType=INTEGER},
+      </if>
+      <if test="glassCnt != null">
+        #{glassCnt,jdbcType=INTEGER},
+      </if>
+      <if test="maskCnt != null">
+        #{maskCnt,jdbcType=INTEGER},
+      </if>
+      <if test="isStainedPlate != null">
+        #{isStainedPlate,jdbcType=INTEGER},
+      </if>
+      <if test="storageFlag != null">
+        #{storageFlag,jdbcType=INTEGER},
+      </if>
+      <if test="snapHeadstock != null">
+        #{snapHeadstock,jdbcType=INTEGER},
+      </if>
+      <if test="extractedFlag != null">
+        #{extractedFlag,jdbcType=INTEGER},
+      </if>
+      <if test="vendor != null">
+        #{vendor,jdbcType=VARCHAR},
+      </if>
+      <if test="algorithmVersion != null">
+        #{algorithmVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="featureData != null">
+        #{featureData,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
